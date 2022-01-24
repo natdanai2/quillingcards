@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'quillingcards';
+  logo = './assets/img/Group_28.svg';
+  logo2 = './assets/img/image_1.svg';
 }
+

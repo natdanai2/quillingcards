@@ -1,0 +1,60 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Prompt', sans-serif;
+}
+
+.container {
+  padding: 50px;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08)  ;
+  height: 850px;
+  margin: 3rem auto;
+}
+
+.header {
+  font-size: 1.8em;
+}
+
+.cardbox {
+  position: relative;
+  width: 80%;
+  padding: 30px;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-gap: 30px;
+}
+
+.card {
+  position: relative;
+  padding: 30px;
+  border-radius: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  border-radius: 20px;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  height: 190px;
+
+}
+
+.numbers {
+  position: relative;
+  font-weight: 500;
+  font-size: 2.5em;
+  color: white;
+}
+
+.cardname {
+  font-size: 1.1em;
+  margin-top: 5px;
+  color: white;
+}
+
+.iconBx{
+  text-align: right;
+}
+
+.footer {
+  text-align: center;
+  color: white;
+}
