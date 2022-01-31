@@ -1,0 +1,26 @@
+<div class="container">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">รหัสพนักงาน</th>
+        <th scope="col">ชื่อ-นามสกุล</th>
+        <th scope="col">เบอร์โทรศัพท์</th>
+        <th scope="col">ที่อยู่</th>
+        <th scope="col">วัน/เดือน/ปีเกิด</th>
+        <th scope="col">สิทธ์การเข้าใช้</th>
+      </tr>
+    </thead>
+    <tbody class="info">
+      <tr *ngFor="let b of this.employee; let i = index">
+        <th scope="row">{{ i+1 }}</th>
+        <td>{{b.em_id}}</td>
+        <td>{{b.name}}</td>
+        <td>{{b.phone}}</td>
+        <td>{{b.address}}</td>
+        <td>{{b.birthdate}}</td>
+        <td>{{b.permission}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

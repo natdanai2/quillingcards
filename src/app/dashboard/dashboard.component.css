@@ -17,10 +17,7 @@ font-size:20px;
 }
 
 
-.main-menu:hover,nav.main-menu.expanded {
-width:250px;
-overflow:visible;
-}
+
 
 .main-menu {
 background:#313139;
@@ -30,7 +27,7 @@ top:0;
 bottom:0;
 height:100%;
 left:0;
-width:60px;
+width:250px;
 overflow:hidden;
 -webkit-transition:width .05s linear;
 transition:width .05s linear;
