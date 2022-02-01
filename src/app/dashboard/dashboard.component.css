@@ -16,8 +16,10 @@ vertical-align: middle;
 font-size:20px;
 }
 
-
-
+.main-menu:hover,nav.main-menu.expanded {
+  width:250px;
+  overflow:visible;
+  }
 
 .main-menu {
 background:#313139;
@@ -27,7 +29,7 @@ top:0;
 bottom:0;
 height:100%;
 left:0;
-width:250px;
+width:60px;
 overflow:hidden;
 -webkit-transition:width .05s linear;
 transition:width .05s linear;
@@ -51,7 +53,7 @@ display:table;
 border-collapse:collapse;
 border-spacing:0;
 color:#999;
- font-family: arial;
+font-family: arial;
 font-size: 14px;
 text-decoration:none;
 
