@@ -1,14 +1,17 @@
 <div class="container">
+  <h1 class="head">รายการข้อมูลพนักงาน</h1> <br>
   <table class="table">
-    <thead class="thead-dark">
+    <thead class="thead-dark" style="background-color: #FFE1E1;">
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">รหัสพนักงาน</th>
+        <th scope="col">ลำดับ</th>
+        <th scope="col">ID</th>
         <th scope="col">ชื่อ-นามสกุล</th>
         <th scope="col">เบอร์โทรศัพท์</th>
         <th scope="col">ที่อยู่</th>
-        <th scope="col">วัน/เดือน/ปีเกิด</th>
+        <th scope="col">วัน/เดือน/ปี</th>
         <th scope="col">สิทธ์การเข้าใช้</th>
+        <th scope="col">แก้ไข</th>
+        <th scope="col">ลบ</th>
       </tr>
     </thead>
     <tbody class="info">
@@ -20,6 +23,10 @@
         <td>{{b.address}}</td>
         <td>{{b.birthdate}}</td>
         <td>{{b.permission}}</td>
+        <td><button type="button" class="orengeyellow btn-block btn-lg btn btn-"><p class="white" style="font-size: 16px;">แก้ไข</p></button></td>
+        <td><button type="button" class="red btn-block btn-lg btn btn-"><p class="white" style="font-size: 16px;">ลบ</p></button></td>
+
+
       </tr>
     </tbody>
   </table>
