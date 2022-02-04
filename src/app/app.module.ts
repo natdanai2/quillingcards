@@ -8,7 +8,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { RealdashboardComponent } from './realdashboard/realdashboard.component';
 import { ProductComponent } from './product/product.component';
 import { EmployeeComponent } from './employee/employee.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddEmployeeComponent } from './add-employee/add-employee.component';
+
 
 @NgModule({
   declarations: [
@@ -17,13 +19,15 @@ import { FormsModule } from '@angular/forms';
     DashboardComponent,
     RealdashboardComponent,
     ProductComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    AddEmployeeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

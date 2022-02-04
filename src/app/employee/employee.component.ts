@@ -1,6 +1,7 @@
+import { QuillingcardsService } from './../shared/quillingcards.service';
 import { employee } from './../shared/quilling.model';
 import { Component, OnInit } from '@angular/core';
-import { QuillingcardsService } from '../shared/quillingcards.service';
+import { Subscriber, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-employee',
@@ -10,8 +11,10 @@ import { QuillingcardsService } from '../shared/quillingcards.service';
 export class EmployeeComponent implements OnInit {
   path: string = 'http://localhost/quillingcards';
   employee: employee[] | undefined;
+  keyword: string = '';
 
-  constructor(private employeeService: QuillingcardsService) { }
+
+  constructor(private employeeService: QuillingcardsService, ) { }
 
   ngOnInit(): void {
     this.employeeService.getEmployee().subscribe(
@@ -21,6 +24,14 @@ export class EmployeeComponent implements OnInit {
       }
     );
   }
+search(): void {
+  //alert(this.keyword);
+  this.employeeService.getEmployeeByKey(this.keyword).subscribe(
+    (employee) => {
+      this.employee = employee;
+    }
+  );
+}
 
 }
 
