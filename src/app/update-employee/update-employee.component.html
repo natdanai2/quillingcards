@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 mx-auto">
+      <h3 class="text-center">แก้ไขรายชื่อพนักงาน</h3>
+      <form [formGroup]="editEmployee" >
+
+        <div class="form-group">
+          <label for="em_id">รหัสพนักงาน</label>
+          <input formControlName="em_id" type="text" class="form-control" id="em_id">
+        </div>
+
+        <div class="form-group">
+          <label for="name">ชื่อ-นามสกุล</label>
+          <input formControlName="name" type="text" class="form-control" id="name">
+        </div>
+
+        <div class="form-group">
+          <label for="phone">เบอร์โทรศัพท์</label>
+          <input formControlName="phone" type="text" class="form-control" id="phone">
+        </div>
+
+        <div class="form-group">
+          <label for="address">ที่อยู่</label>
+          <input formControlName="address" type="text" class="form-control" id="address">
+        </div>
+
+        <div class="form-group">
+          <label for="birthdate">วัน/เดือน/ปีเกิด</label>
+          <input formControlName="birthdate" type="date" class="form-control" id="birthdate">
+        </div>
+
+        <div class="form-group">
+          <label for="perid">สิทธ์การเข้าใช้</label>
+          <select formControlName="perid" type="text" class="form-control" id="perid">
+            <option value="approve">approve</option>
+            <option value="disapproved">disapproved</option>
+          </select>
+        </div>
+        <br>
+        <button (click)="updateemployee(editEmployee.value)" type="submit" class="btn btn-primary float-end" >
+          แก้ไข
+        </button>
+      </form>
+
+    </div>
+  </div>
+</div>
+

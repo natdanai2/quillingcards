@@ -1,7 +1,9 @@
+import { UpdateEmployeeComponent } from './../update-employee/update-employee.component';
 import { QuillingcardsService } from './../shared/quillingcards.service';
 import { employee } from './../shared/quilling.model';
 import { Component, OnInit } from '@angular/core';
 import { Subscriber, Subscription } from 'rxjs';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-employee',
@@ -14,7 +16,8 @@ export class EmployeeComponent implements OnInit {
   keyword: string = '';
 
 
-  constructor(private employeeService: QuillingcardsService, ) { }
+
+  constructor(private employeeService: QuillingcardsService,private router: Router ) { }
 
   ngOnInit(): void {
     this.employeeService.getEmployee().subscribe(
@@ -32,6 +35,12 @@ search(): void {
     }
   );
 }
+delEmp(em_id:any){
+  this.employeeService.deleteEmployee(em_id).subscribe(),
+   window.location.reload()
+
+}
+
 
 }
 

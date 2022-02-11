@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-6 mx-auto">
-      <h3 class="text-center">เพิ่มรายชื่อพนักงาน</h3>
-      <form #addemployeeForm="ngForm">
+      <h3 class="text-center">เพิ่มรายชื่อลูกค้า</h3>
+      <form #addcustomerForm="ngForm">
 
         <div class="form-group">
-          <label for="id">รหัสพนักงาน</label>
-          <input ngModel name="em_id" type="text" class="form-control" id="em_id">
+          <label for="id">ID</label>
+          <input ngModel name="cus_id" type="text" class="form-control" id="cus_id">
         </div>
 
         <div class="form-group">
@@ -25,19 +25,16 @@
         </div>
 
         <div class="form-group">
-          <label for="birthdate">วัน/เดือน/ปีเกิด</label>
-          <input ngModel name="birthdate" type="date" class="form-control" id="birthdate">
+          <label for="address">อีเมล</label>
+          <input ngModel name="email_address" type="text" class="form-control" id="email_address">
         </div>
 
         <div class="form-group">
-          <label for="perid">สิทธ์การเข้าใช้</label>
-          <select ngModel name="perid" type="text" class="form-control" id="perid">
-            <option value="0">approve</option>
-            <option value="1">disapproved</option>
-          </select>
+          <label for="birthdate">วัน/เดือน/ปีเกิด</label>
+          <input ngModel name="birthdate" type="date" class="form-control" id="birthdate">
         </div>
         <br>
-        <button (click)="addemployee(addemployeeForm.value)" type="submit" class="btn btn-primary float-end" >
+        <button (click)="addemployee(addcustomerForm.value)" type="submit" class="btn btn-primary float-end" >
           เพิ่ม
         </button>
       </form>
@@ -45,3 +42,4 @@
     </div>
   </div>
 </div>
+

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -14,7 +15,7 @@ export class AddEmployeeComponent implements OnInit {
 
   subAddEmp: Subscription | undefined;
 
-  constructor(private employeeService: QuillingcardsService,) { }
+  constructor(private employeeService: QuillingcardsService,private Router :Router) { }
 
   ngOnInit(): void {
   }
@@ -22,11 +23,10 @@ addemployee(emp_value: any): void {
   this.subAddEmp = this.employeeService.addEmployee(emp_value).subscribe(
     (feedback) => {
       alert(feedback.message);
+      this.Router.navigate(['employee'])
     }
   );
 }
-
-
 
 ngOnDestroy(): void {
   this.subAddEmp?.unsubscribe();
