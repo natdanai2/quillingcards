@@ -14,6 +14,9 @@ import { UpdateEmployeeComponent } from './update-employee/update-employee.compo
 import { CustomerComponent } from './customer/customer.component';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { UpdateCustomerComponent } from './update-customer/update-customer.component';
+import { AddProductComponent } from './add-product/add-product.component';
+import { UpdateProductComponent } from './update-product/update-product.component';
+import { OrderComponent } from './order/order.component';
 
 
 @NgModule({
@@ -28,7 +31,10 @@ import { UpdateCustomerComponent } from './update-customer/update-customer.compo
     UpdateEmployeeComponent,
     CustomerComponent,
     AddCustomerComponent,
-    UpdateCustomerComponent
+    UpdateCustomerComponent,
+    AddProductComponent,
+    UpdateProductComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,

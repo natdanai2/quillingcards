@@ -11,7 +11,7 @@ import { Subscriber, Subscription } from 'rxjs';
   styleUrls: ['./add-employee.component.css']
 })
 export class AddEmployeeComponent implements OnInit {
-  addemployeeUrl: string = 'http://localhost/quillingcards/api_add_employee.php';
+  addemployeeUrl: string = 'http://localhost/quillingcards/api_employee_add.php';
 
   subAddEmp: Subscription | undefined;
 

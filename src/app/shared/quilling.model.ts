@@ -15,3 +15,13 @@ export interface customer {
   email_address: string;
   birthdate: string;
 }
+
+export interface product {
+  pro_id:    string;
+  name:     string;
+  quantity:     string;
+  price:   string;
+  product_pic: string;
+}
+
+

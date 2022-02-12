@@ -1,1 +1,50 @@
-<p>product works!</p>
+<div class="container">
+  <h1 class="head">รายการสินค้า</h1> <br>
+
+  <div class="input-group">
+    <input type="search" [(ngModel)]="keyword" class="form-control rounded" placeholder="Search" aria-label="Search"
+      aria-describedby="search-addon"(ngModelChange)="search()" />
+    <button type="button" class="btn btn-outline-primary" >search</button>
+  </div>
+  <br>
+
+  <button type="button" class="greenlight btn-block btn-lg btn btn-" style="float: right;"
+    [routerLink]="['/addproduct']">
+    <p class="white" style="font-size: 16px;">เพิ่ม</p>
+  </button>
+
+
+  <table class="table">
+    <thead class="thead-dark" style="background-color: #FFE1E1;  ">
+      <tr>
+        <th scope="col">ลำดับ</th>
+        <th scope="col">img</th>
+        <th scope="col">ID</th>
+        <th scope="col">ชื่อสินค้า</th>
+        <th scope="col">จำนวน</th>
+        <th scope="col">ราคา</th>
+        <th scope="col">แก้ไข</th>
+        <th scope="col">ลบ</th>
+      </tr>
+    </thead>
+    <tbody class="info">
+      <tr *ngFor="let b of this.product; let i = index">
+        <th scope="row">{{ i+1 }}</th>
+        <td>
+          <img [src]="path+b.product_pic" width="50px"/>
+        </td>
+        <td>{{b.pro_id}}</td>
+        <td>{{b.name}}</td>
+        <td>{{b.quantity}}</td>
+        <td>{{b.price}}</td>
+       <td><a routerLink="/updateproduct/{{b.pro_id}}"><button type="button"
+              class="orengeyellow btn-block btn-lg btn btn-">
+              <p class="white" style="font-size: 16px;">แก้ไข</p>
+            </button></a></td>
+              <td><button type="button" class="red btn-block btn-lg btn btn-" (click)="delPro(b.pro_id)">
+            <p class="white" style="font-size: 16px;">ลบ</p>
+          </button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

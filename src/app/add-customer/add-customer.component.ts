@@ -11,7 +11,7 @@ import { Subscriber, Subscription } from 'rxjs';
   styleUrls: ['./add-customer.component.css']
 })
 export class AddCustomerComponent implements OnInit {
-  addcustomerUrl: string = 'http://localhost/quillingcards/api_add_customer.php';
+  addcustomerUrl: string = 'http://localhost/quillingcards/api_customer_add.php';
 
   subAddCus: Subscription | undefined;
 
