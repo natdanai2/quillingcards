@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { employee } from './quilling.model';
 import { customer } from './quilling.model';
 import { product } from './quilling.model';
+import { order } from './quilling.model';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,8 @@ export class QuillingcardsService {
   addproductUrl: string = 'http://localhost/quillingcards/api_product_add.php';
   deleteproductUrl: string = 'http://localhost/quillingcards/api_product_del.php';
   updateproductUrl: string = 'http://localhost/quillingcards/api_product_update.php';
+
+  orderUrl: string = 'http://localhost/quillingcards/get_order_orderidV2.php';
 
   constructor(private http: HttpClient) { }
 
@@ -95,6 +98,7 @@ updateEmp(formValue: any): Observable<any>{
     getProduct(): Observable<product[]>{
       return this.http.get<product[]>(this.productUrl);
     }
+
     getProductByProId(pro_id:any): Observable<product[]>{
       const param = {
         'pro_id' : pro_id
@@ -121,5 +125,21 @@ updateEmp(formValue: any): Observable<any>{
       const edit_proHeader = {'Content-Type':'application/json'};
         return this.http.put<any>(this.updateproductUrl,formValue,{headers: edit_proHeader});
       }
+
+      getOrder(): Observable<order[]>{
+        return this.http.get<order[]>(this.orderUrl);
+      }
+      getOrderByOrderId(order_id:any): Observable<order[]>{
+        const param = {
+          'order_id' : order_id
+       };
+       return this.http.get<order[]>(this.orderUrl, {params: param});;
+      }
+      getOrderByKey(keyword: string): Observable<order[]>{
+        const param = {
+           'keyword' : keyword
+        };
+        return this.http.get<order[]>(this.orderUrl, {params: param});
+       }
 }
 
