@@ -5,6 +5,7 @@ export interface employee {
   address:   string;
   birthdate: string;
   permission: string;
+  totalResults: number;
 }
 
 export interface customer {
@@ -14,6 +15,7 @@ export interface customer {
   address:   string;
   email_address: string;
   birthdate: string;
+  totalResults: number;
 }
 
 export interface product {
@@ -22,6 +24,21 @@ export interface product {
   quantity:     string;
   price:   string;
   product_pic: string;
+  totalResults: number;
+
+}
+
+export interface order {
+  order_id:    string;
+  Product_name:     string;
+  Customer_name:     string;
+  quantity:   string;
+  total: string;
+  status: string;
+  date: string;
+  time: string;
+  picture_payment: string;
+  totalResults: number;
 }
 
 

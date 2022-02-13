@@ -12,56 +12,67 @@
   margin: 3rem auto;
 }
 
-.header {
-  font-size: 1.8em;
+
+.card-counter{
+  box-shadow: 2px 2px 10px #DADADA;
+  margin: 5px;
+  padding: 20px 10px;
+  background-color: #fff;
+  height: 100px;
+  border-radius: 5px;
+  transition: .3s linear all;
 }
 
-.cardbox {
-  position: relative;
-  width: 80%;
-  padding: 30px;
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  grid-gap: 30px;
+.card-counter:hover{
+  box-shadow: 4px 4px 20px #DADADA;
+  transition: .3s linear all;
 }
 
-.card {
-  position: relative;
-  padding: 30px;
-  border-radius: flex;
-  justify-content: space-between;
-  cursor: pointer;
-  border-radius: 20px;
-  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
-  height: 190px;
-  width:280px; /* or whatever width you want. */
-  max-width:280px; /* or whatever width you want. */
-  display: inline-block;
+.card-counter.primary{
+  background-color: #3DB7BF;
+  color: #FFF;
+}
+
+.card-counter.danger{
+  background-color: #35B92A;
+  color: #FFF;
+}
+
+.card-counter.success{
+  background-color: #F2A000;
+  color: #FFF;
+}
+
+.card-counter.info{
+  background-color: #E14545;
+  color: #FFF;
+}
+
+.card-counter i{
+  font-size: 5em;
+  opacity: 0.2;
+}
+
+.card-counter .count-numbers{
+  position: absolute;
+  right: 35px;
+  top: 20px;
+  font-size: 32px;
+  display: block;
+}
+
+.card-counter .count-name{
+  position: absolute;
+  right: 35px;
+  top: 65px;
+  font-style: italic;
+  text-transform: capitalize;
+  opacity: 0.5;
+  display: block;
+  font-size: 18px;
 
 }
 
-.numbers {
-  position: relative;
-  font-weight: 500;
-  font-size: 2.5em;
-  color: white;
-}
-
-.cardname {
-  font-size: 1.1em;
-  margin-top: 5px;
-  color: white;
-
-
-}
-
-.iconBx{
-  text-align: right;
-
-}
-
-.footer {
-  text-align:center;
-  color: white;
-  position: fixed;
+.textpro {
+  font-size: 18px;
 }

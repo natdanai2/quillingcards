@@ -1,63 +1,41 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
 <div class="container">
-  <header class="header">
-    แดชบอร์ด
-  </header> <br><br>
-  <div class="row">
-    <div class="col">
-      <div class="card" style="background-color: #3DB7BF;">
-        <div>
-          <div class="numbers">57</div>
-          <div class="iconBx">
-
-          </div>
-          <div class="cardname">จำนวนสินค้า</div>
-        </div>
-        <div class="footer">
-          <a href="">ดูเพิ่มเติม</a>
-        </div>
+  <h1 class="head">แดชบอร์ด</h1> <br>
+    <div class="row">
+    <div class="col-md-3">
+      <div class="card-counter primary">
+        <i class="fa fa-shopping-bag"></i>
+        <span class="count-numbers">{{ totalResults1 }} ชิ้น</span>
+        <span class="count-name">จำนวนสินค้า</span>
       </div>
     </div>
-    <div class="col">
-      <div class="card" style="background-color: #35B92A;">
-        <div>
-          <div class="numbers">10</div>
-          <div class="iconBx">
 
-          </div>
-          <div class="cardname">รายการสั่งซื้อ</div>
-        </div>
-        <div class="footer">
-          <a href="">ดูเพิ่มเติม</a>
-        </div>
+    <div class="col-md-3">
+      <div class="card-counter danger">
+        <i class="fa fa-list"></i>
+        <span class="count-numbers">{{ totalResults2 }}</span>
+        <span class="count-name">รายการสั่งซื้อ</span>
       </div>
     </div>
-    <div class="col">
-      <div class="card" style="background-color: #F2A000;">
-        <div>
-          <div class="numbers">80</div>
-          <div class="iconBx">
 
-          </div>
-          <div class="cardname">จำนวนลูกค้า</div>
-        </div>
-        <div class="footer">
-          <a href="">ดูเพิ่มเติม</a>
-        </div>
+    <div class="col-md-3">
+      <div class="card-counter success">
+        <i class="fa fa-users"></i>
+        <span class="count-numbers">{{ totalResults3 }}</span>
+        <span class="count-name">จำนวนลูกค้า</span>
       </div>
     </div>
-    <div class="col">
-      <div class="card" style="background-color: #E14545;">
-        <div>
-          <div class="numbers">5</div>
-          <div class="iconBx">
 
-          </div>
-          <div class="cardname">จำนวนพนักงาน</div>
-        </div>
-        <div class="footer">
-          <a href="">ดูเพิ่มเติม</a>
-        </div>
+    <div class="col-md-3">
+      <div class="card-counter info">
+        <i class="fa fa-user"></i>
+        <span class="count-numbers">{{ totalResults4 }}</span>
+        <span class="count-name">จำนวนพนักงาน</span>
       </div>
     </div>
   </div>

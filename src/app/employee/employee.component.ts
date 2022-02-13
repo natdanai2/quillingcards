@@ -15,8 +15,6 @@ export class EmployeeComponent implements OnInit {
   employee: employee[] | undefined;
   keyword: string = '';
 
-
-
   constructor(private employeeService: QuillingcardsService,private router: Router ) { }
 
   ngOnInit(): void {

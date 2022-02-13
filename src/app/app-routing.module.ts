@@ -1,3 +1,4 @@
+import { OrderComponent } from './order/order.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path:'updatecustomer/:cus_id',component : UpdateCustomerComponent,},
   {path:'product',component : ProductComponent},
   {path:'addproduct',component : AddProductComponent},
-  {path:'updateproduct/:pro_id',component : UpdateProductComponent}
+  {path:'updateproduct/:pro_id',component : UpdateProductComponent},
+  {path:'order',component : OrderComponent}
 ];
 
 @NgModule({
