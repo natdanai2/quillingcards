@@ -10,8 +10,8 @@ import { Router, RouterModule } from '@angular/router';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  path: string = 'http://localhost/quillingcards';
-  product: product[] | undefined;
+  path: string = 'http://localhost/quillingcards/';
+  product: any | undefined;
   keyword: string = '';
 
   constructor(private productService: QuillingcardsService,private router: Router ) { }
@@ -19,8 +19,9 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
     this.productService.getProduct().subscribe(
       (product) => {
-        //console.log(employee);
+
         this.product = product;
+        console.log(this.product)
       }
     );
   }
@@ -28,16 +29,17 @@ export class ProductComponent implements OnInit {
     //alert(this.keyword);
     this.productService.getProductByKey(this.keyword).subscribe(
       (product) => {
+        console.log(product);
         this.product = product;
       }
     );
   }
-  delPro(pro_id:any){
-    this.productService.deleteProduct(pro_id).subscribe(),
-     window.location.reload()
-
+  delPro(pro_id:any,path:any){
+    this.productService.deleteProduct(pro_id,path).subscribe(
+      (feedbac) => {
+        alert(feedbac.message)
+        window.location.reload()
+      }
+    )
   }
-
-
-
-  }
+}

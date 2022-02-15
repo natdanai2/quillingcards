@@ -10,8 +10,10 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class OrderComponent implements OnInit {
   path: string = 'http://localhost/quillingcards';
-  order: order[] | undefined;
+  order: any;
   keyword: string = '';
+
+  check :any
 
   constructor(private orderService: QuillingcardsService,private router: Router) { }
 
@@ -19,7 +21,17 @@ export class OrderComponent implements OnInit {
     this.orderService.getOrder().subscribe(
       (order) => {
         //console.log(employee);
+        for (let index = 0; index < order.length; index++) {
+
+          if(order[index].order_id == order[1-index].order_id){
+           order.splice(index,1)
+            break;
+          }
+
+        }
         this.order = order;
+        console.log(this.order)
+
       }
     );
   }
@@ -31,5 +43,9 @@ search(): void {
     }
   );
 }
+delOrder(order_id:any){
+  this.orderService.deleteOrder(order_id).subscribe()
+  window.location.reload()
 
+}
 }

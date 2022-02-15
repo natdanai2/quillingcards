@@ -27,6 +27,9 @@ export class QuillingcardsService {
   updateproductUrl: string = 'http://localhost/quillingcards/api_product_update.php';
 
   orderUrl: string = 'http://localhost/quillingcards/get_order_orderidV2.php';
+  deleteorderUrl: string = 'http://localhost/quillingcards/api_order_del.php';
+
+  imgUrl: string = 'http://localhost/quillingcards/api_add_img.php';
 
   constructor(private http: HttpClient) { }
 
@@ -95,6 +98,9 @@ updateEmp(formValue: any): Observable<any>{
     }
 
 
+    AddPro_img(formvalue : any): Observable<any>{
+    return this.http.post<any[]>(this.imgUrl, formvalue, {reportProgress: true});
+  }
     getProduct(): Observable<product[]>{
       return this.http.get<product[]>(this.productUrl);
     }
@@ -115,9 +121,10 @@ updateEmp(formValue: any): Observable<any>{
       const proHeader = {'Content-Type':'application/json'};
       return this.http.post<any>(this.addproductUrl, pro_value, {headers: proHeader});
     }
-    deleteProduct(id_pro: any): Observable<any>{
+    deleteProduct(id_pro: any,path :any): Observable<any>{
       const param = {
-        'pro_id' : id_pro
+        'pro_id' : id_pro,
+        'path' :path
      };
      return this.http.get<any[]>(this.deleteproductUrl, {params: param});
     }
@@ -126,14 +133,14 @@ updateEmp(formValue: any): Observable<any>{
         return this.http.put<any>(this.updateproductUrl,formValue,{headers: edit_proHeader});
       }
 
-      getOrder(): Observable<order[]>{
-        return this.http.get<order[]>(this.orderUrl);
+      getOrder(): Observable<any>{
+        return this.http.get<any[]>(this.orderUrl);
       }
-      getOrderByOrderId(order_id:any): Observable<order[]>{
+      getOrderByOrderId(order_id:any): Observable<any>{
         const param = {
           'order_id' : order_id
        };
-       return this.http.get<order[]>(this.orderUrl, {params: param});;
+       return this.http.get<any[]>(this.orderUrl, {params: param});;
       }
       getOrderByKey(keyword: string): Observable<order[]>{
         const param = {
@@ -141,5 +148,17 @@ updateEmp(formValue: any): Observable<any>{
         };
         return this.http.get<order[]>(this.orderUrl, {params: param});
        }
+       getBycusId(keyword: string): Observable<order[]>{
+        const param = {
+           'cus_id' : keyword
+        };
+        return this.http.get<order[]>(this.orderUrl, {params: param});
+       }
+       deleteOrder(id_order: any): Observable<any>{
+        const param = {
+          'order_id' : id_order
+       };
+       return this.http.get<any[]>(this.deleteorderUrl, {params: param});
+      }
 }
 

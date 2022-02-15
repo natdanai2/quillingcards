@@ -26,13 +26,13 @@
 
         <div class="form-group">
           <label for="inputfile" class="col-sm-2 col-form-label">ภาพสินค้า</label>
-          <div class="col-sm-10"> <input type="file" class="form-control" id="inputfile" > </div>
+          <div class="col-sm-10"> <input type="file" class="form-control" id="inputfile" (change)="onChange($event)"> </div>
         </div>
-
         <br>
         <button (click)="addproduct(addproductForm.value)" type="submit" class="btn btn-primary float-end" >
           เพิ่ม
         </button>
+        <input type="hidden" ngModel name="img_id" value={{img_id}}>
       </form>
 
     </div>

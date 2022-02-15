@@ -11,6 +11,7 @@ import { UpdateEmployeeComponent } from './update-employee/update-employee.compo
 import { CustomerComponent } from './customer/customer.component';
 import { UpdateCustomerComponent } from './update-customer/update-customer.component';
 import { ProductComponent } from './product/product.component';
+import { BilldetailComponent } from './billdetail/billdetail.component';
 
 const routes: Routes = [
   {path:'',pathMatch: 'full',redirectTo: 'dashboard' },
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path:'product',component : ProductComponent},
   {path:'addproduct',component : AddProductComponent},
   {path:'updateproduct/:pro_id',component : UpdateProductComponent},
-  {path:'order',component : OrderComponent}
+  {path:'order',component : OrderComponent},
+  {path:'billdetail/:id',component : BilldetailComponent}
 ];
 
 @NgModule({
