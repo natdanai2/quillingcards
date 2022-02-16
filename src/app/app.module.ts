@@ -18,6 +18,7 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
 import { OrderComponent } from './order/order.component';
 import { BilldetailComponent } from './billdetail/billdetail.component';
+import { NgxPrintModule } from 'ngx-print';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { BilldetailComponent } from './billdetail/billdetail.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPrintModule
   ],
   providers: [],
   bootstrap: [AppComponent]

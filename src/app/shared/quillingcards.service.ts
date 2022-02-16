@@ -33,8 +33,8 @@ export class QuillingcardsService {
 
   constructor(private http: HttpClient) { }
 
-getEmployee(): Observable<employee[]>{
-  return this.http.get<employee[]>(this.employeeUrl);
+getEmployee(): Observable<any>{
+  return this.http.get<any[]>(this.employeeUrl);
 }
 getEmployeeByEmpId(em_id:any): Observable<employee[]>{
   const param = {

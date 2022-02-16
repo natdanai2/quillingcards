@@ -5,6 +5,7 @@ export interface employee {
   address:   string;
   birthdate: string;
   permission: string;
+  Employee_name: string;
 
 }
 
