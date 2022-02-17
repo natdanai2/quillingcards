@@ -1,4 +1,5 @@
-<div class="container" id="section">
+<div class="container" >
+  <div id="section">
   <h1 class="head">รายการสั่งซื้อ </h1> <br>
   <h2 style="text-align: center  ;">Bill Detail </h2><br>
   <span class="text">Date : {{ totalDate }}</span><br>
@@ -41,17 +42,20 @@
     <span *ngFor="let b of this.order; let i = index;">
       <div *ngIf="b.picture_payment != ''">
       <div style="font-size: large;">หลักฐานการชำระเงิน</div>
-      <div style="text-align: center;">
-        <img [src]="path+b.picture_payment" width="150px">
+      <div style="text-align: right;">
+        <img [src]="path+b.picture_payment" width="250px">
       </div>
     </div>
 
     </span>
   </div>
+</div>
   <button printSectionId="section" ngxPrint type="button" class="blue btn-block btn-lg btn btn-">
     <p class="white" style="font-size: 16px;" >พิมพ์ใบเสร็จ</p>
   </button>
 </div>
+
+
 
 
 
