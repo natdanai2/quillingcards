@@ -33,14 +33,14 @@ export class BilldetailComponent implements OnInit {
       (order) => {
         console.log(order);
         for (let index = 0; index < order.length; index++) {
-
-          if(order[index].picture_payment == order[1-index].picture_payment ){
+      if(index !=0) {
+          if(order[index].picture_payment == order[index-1].picture_payment ){
             order[index].picture_payment = ''
             //order.splice(index,1)
           }
+        }
           this.sum = parseInt( order[index].price)*parseInt(order[index].quantity)
           this.sum_total = this.sum_total + this.sum
-
         }
         this.order = order;
         this.totalEmployeename = order[0].Employee_name

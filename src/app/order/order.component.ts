@@ -20,18 +20,20 @@ export class OrderComponent implements OnInit {
   ngOnInit(): void {
     this.orderService.getOrder().subscribe(
       (order) => {
-        //console.log(employee);
+        console.log(order);
         for (let index = 0; index < order.length; index++) {
+      if(index !=0) {
 
-          if(order[index].order_id == order[1-index].order_id){
+         if(order[index].order_id == order[index-1].order_id){
            order.splice(index,1)
-            break;
           }
 
-        }
-        this.order = order;
-        console.log(this.order)
 
+      }
+
+
+    }
+    this.order = order;
       }
     );
   }

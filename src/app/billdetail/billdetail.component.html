@@ -42,17 +42,20 @@
     <span *ngFor="let b of this.order; let i = index;">
       <div *ngIf="b.picture_payment != ''">
       <div style="font-size: large;">หลักฐานการชำระเงิน</div>
-      <div style="text-align: right;">
+      <div style="text-align: center;">
         <img [src]="path+b.picture_payment" width="250px">
       </div>
     </div>
 
+
     </span>
+
   </div>
+
 </div>
-  <button printSectionId="section" ngxPrint type="button" class="blue btn-block btn-lg btn btn-">
-    <p class="white" style="font-size: 16px;" >พิมพ์ใบเสร็จ</p>
-  </button>
+<button printSectionId="section" ngxPrint type="button" [useExistingCss]="true" class="blue btn-block btn-lg btn btn-">
+  <p class="white" style="font-size: 16px;" >พิมพ์ใบเสร็จ</p>
+</button>
 </div>
 
 
