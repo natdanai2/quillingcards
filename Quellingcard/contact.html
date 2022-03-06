@@ -1,0 +1,385 @@
+<?php
+error_reporting(0);
+session_start();
+require_once 'config/db.php';
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>QuellingCardShop</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/icon.png">
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/templatemo.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="assets/css/testtemplate.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js'></script>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
+        <div class="container text-light">
+            <div class="w-100 d-flex justify-content-between">
+                <div>
+                    <i class="fa fa-envelope mx-2"></i>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">siwapoom@hotmail.com</a>
+                    <i class="fa fa-phone mx-2"></i>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">092-261-6441</a>
+                </div>
+                <div>
+                    <a class="text-light" href="https://facebook.com/" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
+
+                    <?php
+                    if (isset($_SESSION['user_login'])) {
+                        $user_id = $_SESSION['user_login'];
+                        $stmt = $conn->query("SELECT * FROM users WHERE id = $user_id");
+                        $stmt->execute();
+                        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                        echo  "welcome " . $row['firstname'] . ' ' . $row['lastname'] . "   ";
+                        echo '<a href="logout.php" class="btn btn-danger">Logout</a>';
+                    } else if (isset($_SESSION['admin_login'])) {
+                        $admin_id = $_SESSION['admin_login'];
+                        $stmt = $conn->query("SELECT * FROM users WHERE id = $admin_id");
+                        $stmt->execute();
+                        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                        echo  "welcome " . $row['firstname'] . ' ' . $row['lastname'] . "   ";
+                        echo '<a href="logout.php" class="btn btn-danger">Logout</a>';
+                    } else {
+                        echo '<a class="navbar-sm-brand text-light text-decoration-none" href="http://localhost/Quellingcard/signin.php">สมัครสมาชิก | เข้าสู่ระบบ</a>';
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <nav class="navbar navbar-expand-lg navbar-light shadow">
+        <div class="container d-flex justify-content-between align-items-center">
+
+            <a class="i" href="index.php"><img src="assets/img/Logo.png" style="width:150;height:90px;"></a>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
+                <div class="flex-fill">
+                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php">หน้าหลัก</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="shop.php">ร้านค้า</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="payment.php">เเจ้งชำระเงิน</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.php">เกี่ยวกับเรา</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" style="color:#a97049" href="contact.php">ติดต่อเราได้</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar align-self-center d-flex">
+                    <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="inputMobileSearch" placeholder="Search ...">
+                            <div class="input-group-text">
+                                <i class="fa fa-fw fa-search"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
+                        <i class="fa fa-fw fa-search text-black mr-2"></i>
+                    </a>
+
+                    <a class="nav-item">
+                        <a class="nav-link" href="cart.php"><i class="fas fa-shopping-cart"></i> <span id="cart-item" class="badge badge-danger"></span></a>
+                    </a>
+
+
+                </div>
+            </div>
+
+        </div>
+    </nav>
+    <!-- Close Header -->
+
+    <!-- Modal -->
+    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="w-100 pt-1 mb-5 text-right">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" method="get" class="modal-content modal-body border-0 p-0">
+                <div class="input-group mb-2">
+                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
+                    <button type="submit" class="input-group-text bg-success text-light">
+                        <i class="fa fa-fw fa-search text-white"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- Start Content Page -->
+    <div class="container-fluid bg-light py-5">
+        <div class="col-md-6 m-auto text-center">
+            <h1 class="h1">ที่ตั้งของร้าน</h1>
+            <p>
+                ร้านการ์ดเพื่อมอบให้คนสำคัญในโอกาศต่างๆ เราทำด้วยใจ ก็เหมือนเราได้ให้เค้าด้วยความตั้งใจของเรา
+            </p>
+        </div>
+    </div>
+
+    </iframe>
+    <br />
+
+    <!-- Start Contact -->
+    <div class="container py-5">
+        <div class="row py-5">
+            <form class="col-md-9 m-auto" method="post" role="form">
+                <div class="row">
+                    <div class="form-group col-md-6 mb-3">
+                        <label for="inputname">Name</label>
+                        <input type="text" class="form-control mt-1" id="name" name="con_name" placeholder="Name">
+                    </div>
+                    <div class="form-group col-md-6 mb-3">
+                        <label for="inputemail">Email</label>
+                        <input type="email" class="form-control mt-1" id="email" name="con_email" placeholder="Email">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="inputsubject">Subject</label>
+                    <input type="text" class="form-control mt-1" id="subject" name="con_subject" placeholder="Subject">
+                </div>
+                <div class="mb-3">
+                    <label for="inputmessage">Message</label>
+                    <textarea class="form-control mt-1" id="message" name="con_message" placeholder="Message" rows="8"></textarea>
+                </div>
+                <div class="row">
+                    <div class="col text-end mt-2">
+                        <button type="submit" id="submitsubmit" name="submitsubmit" class="btn btn-success btn-lg px-3">Let’s Talk</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- End Contact -->
+
+    <?php
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "quilling_cards";
+
+    $con_name = $_POST['con_name'];
+    $con_email = $_POST['con_email'];
+    $con_subject = $_POST['con_subject'];
+    $con_message = $_POST['con_message'];
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    if (isset($_POST["submitsubmit"])) {
+        $sql = "INSERT INTO cont (name, email, subject, message) VALUES('" . $con_name . "', '" . $con_email . "', '" . $con_subject . "', '" . $con_message . "')";
+
+        if ($conn->query($sql) === TRUE) {
+            echo '<script>alert("ข้อความของคุณถูกส่งไปให้เจ้าของร้านเเล้ว ขอบคุณที่ใช้บริการ")</script>';
+        } else {
+            // echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+    }
+    $conn->close();
+    ?>
+
+    <?php
+    // require('config.php');
+    //     $name = $_POST['con_name'];
+    //         $email = $_POST['con_email'];
+    //             $subject = $_POST['con_subject'];
+    //                 $message = $_POST['con_message'];
+
+    //                 $query = mysql_query("INSERT INTO cont (id, name, email, subject, message) VALUES('sus', 'kuy', 'rai', 'sus')")
+    // if(isset($_POST["submit"])){
+    //     if($query = mysql_query("INSERT INTO cont (id, name, email, subject, message) VALUES('', '".$name."', '".$email."', '".$message."')")){
+    //         echo "Success";
+    // }else{
+    //         echo "Failure" . mysql_error();
+    //     }
+    // }
+    ?>
+
+
+    <!-- Start Footer -->
+    <footer class="bg-light" id="tempaltemo_footer">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-4 pt-5">
+                    <h2 class="h2 text-light border-bottom pb-3 border-light logo">Quelling Card Shop</h2>
+                    <ul class="list-unstyled text-light footer-link-list">
+                        <li>
+                            <i class="fas fa-map-marker-alt fa-fw"></i>
+                            66/448 คลองขวาง ภาษีเจริญ กรุงเทพ 10160
+                        </li>
+                        <li>
+                            <i class="fa fa-phone fa-fw"></i>
+                            เบอร์โทร: 092-261-6441
+                        </li>
+                        <li>
+                            <i class="fa fa-envelope fa-fw"></i>
+                            <a class="text-light" href="mailto:info@company.com">siwapoom@hotmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 pt-5">
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">สินค้าสุดพิเศษ</h2>
+                    <ul class="list-unstyled text-light footer-link-list">
+                        <li><a class="text-light" href="#">Luxury</a></li>
+                        <li><a class="text-light" href="#">Sport Wear</a></li>
+                        <li><a class="text-light" href="#">Men's Shoes</a></li>
+                        <li><a class="text-light" href="#">Women's Shoes</a></li>
+                        <li><a class="text-light" href="#">Popular Dress</a></li>
+                        <li><a class="text-light" href="#">Gym Accessories</a></li>
+                        <li><a class="text-light" href="#">Sport Shoes</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 pt-5">
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">ข้อมูลเพิ่มเติม</h2>
+                    <ul class="list-unstyled text-light footer-link-list">
+                        <li><a class="text-light" href="#">หน้าหลัก</a></li>
+                        <li><a class="text-light" href="#">ร้านค้า</a></li>
+                        <li><a class="text-light" href="#">เกี่ยวกับเรา</a></li>
+                        <li><a class="text-light" href="#">ติดต่อเราได้</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="row text-light mb-4">
+                <div class="col-12 mb-3">
+                    <div class="w-100 my-3 border-top border-light"></div>
+                </div>
+                <div class="col-auto me-auto">
+                    <ul class="list-inline text-left footer-icons">
+                        <li class="list-inline-item border border-light rounded-circle text-center">
+                            <a class="text-light text-decoration-none" target="_blank" href="http://facebook.com/"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
+                        </li>
+                        <li class="list-inline-item border border-light rounded-circle text-center">
+                            <a class="text-light text-decoration-none" target="_blank" href="https://www.instagram.com/"><i class="fab fa-instagram fa-lg fa-fw"></i></a>
+                        </li>
+                        <li class="list-inline-item border border-light rounded-circle text-center">
+                            <a class="text-light text-decoration-none" target="_blank" href="https://twitter.com/"><i class="fab fa-twitter fa-lg fa-fw"></i></a>
+                        </li>
+                        <li class="list-inline-item border border-light rounded-circle text-center">
+                            <a class="text-light text-decoration-none" target="_blank" href="https://www.linkedin.com/"><i class="fab fa-linkedin fa-lg fa-fw"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-auto">
+                    <label class="sr-only" for="subscribeEmail">Email address</label>
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control bg-dark border-light" id="subscribeEmail" placeholder="Email address">
+                        <div class="input-group-text btn-success text-light">Subscribe</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-100 bg-dark py-3">
+            <div class="container">
+                <div class="row pt-2">
+                    <div class="col-12">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+    <!-- End Footer -->
+
+    <!-- Start Script -->
+    <script src="assets/js/jquery-1.11.0.min.js"></script>
+    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/templatemo.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <!-- End Script -->
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js'></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            // Change the item quantity
+            $(".itemQty").on('change', function() {
+                var $el = $(this).closest('tr');
+
+                var pid = $el.find(".pid").val();
+                var pprice = $el.find(".pprice").val();
+                var qty = $el.find(".itemQty").val();
+                location.reload(true);
+                $.ajax({
+                    url: 'action.php',
+                    method: 'post',
+                    cache: false,
+                    data: {
+                        qty: qty,
+                        pid: pid,
+                        pprice: pprice
+                    },
+                    success: function(response) {
+                        console.log(response);
+                    }
+                });
+            });
+
+            // Load total no.of items added in the cart and display in the navbar
+            load_cart_item_number();
+
+            function load_cart_item_number() {
+                $.ajax({
+                    url: 'action.php',
+                    method: 'get',
+                    data: {
+                        cartItem: "cart_item"
+                    },
+                    success: function(response) {
+                        $("#cart-item").html(response);
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

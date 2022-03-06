@@ -1,4 +1,5 @@
 export interface employee {
+  cus_id: any;
   em_id:    string;
   name:     string;
   phone:     string;
@@ -20,7 +21,7 @@ export interface customer {
 }
 
 export interface product {
-  pro_id:    string;
+  product_code:    string;
   name:     string;
   quantity:     string;
   price:   string;

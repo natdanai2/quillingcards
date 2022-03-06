@@ -4,7 +4,6 @@
   <div class="input-group">
     <input type="search" [(ngModel)]="keyword" class="form-control rounded" placeholder="Search" aria-label="Search"
       aria-describedby="search-addon"(ngModelChange)="search()" />
-    <button type="button" class="btn btn-outline-primary" >search</button>
   </div>
   <br>
 
@@ -13,37 +12,40 @@
       <tr>
         <th scope="col">ลำดับ</th>
         <th scope="col">ID</th>
-
         <th scope="col">ชื่อลูกค้า</th>
         <th scope="col">สถานะ</th>
-        <th scope="col">วัน/เดือน/ปี</th>
-        <th scope="col">เวลา</th>
+        <th scope="col">จำนวนเงินที่จ่าย</th>
+        <th scope="col">วัน-เวลา</th>
+
         <th scope="col">เปิดดู</th>
-        <th scope="col">ลบ</th>
+
 
       </tr>
     </thead>
     <tbody class="info">
-      <tr *ngFor="let b of this.order; let i = index" >
+      <tr *ngFor="let b of this.order|paginate: { id:'pageorder',itemsPerPage: 6, currentPage: page, totalItems: totalRecords }; let i = index" >
         <th scope="row">{{ i+1 }}</th>
         <td>{{b.order_id}}</td>
-
-        <td>{{b.Customer_name}}</td>
+        <td>{{b.name}}</td>
         <td>{{b.status}}</td>
+        <td>{{b.amount_paid}}</td>
         <td>{{b.date}}</td>
-        <td>{{b.time}}</td>
 
         <td><button type="button" routerLink="/billdetail/{{b.order_id}}"
           class="blue btn-block btn-lg btn btn-">
           <p class="white" style="font-size: 16px;" >เปิดดู</p>
         </button></td>
-        <td><button type="button" class="red btn-block btn-lg btn btn-"(click)="delOrder(b.order_id)" >
-          <p class="white" style="font-size: 16px;">ลบ</p>
-        </button></td>
+
 
       </tr>
 
     </tbody>
   </table>
+  <div class="row">
+    <div class="col-9"></div>
+  <div class="col  " *ngIf="openshow == 1">
+    <pagination-controls id="pageorder" [maxSize]="10" (pageChange)="page = $event" *ngIf="isshow"></pagination-controls>
+  </div>
+</div>
 </div>
 

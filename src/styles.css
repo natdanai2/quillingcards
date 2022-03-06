@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css");
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap%27');
 
 .bd-placeholder-img {
   font-size: 1.125rem;

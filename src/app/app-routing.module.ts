@@ -13,6 +13,7 @@ import { UpdateCustomerComponent } from './update-customer/update-customer.compo
 import { ProductComponent } from './product/product.component';
 import { BilldetailComponent } from './billdetail/billdetail.component';
 
+
 const routes: Routes = [
   {path:'',pathMatch: 'full',redirectTo: 'dashboard' },
   {path:'dashboard',component : RealdashboardComponent },

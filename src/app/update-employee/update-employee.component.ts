@@ -14,14 +14,16 @@ export class UpdateEmployeeComponent implements OnInit {
 subEditEmp: Subscription | undefined;
 
 alert:boolean = false;
-editEmployee= new FormGroup({
-  em_id: new FormControl(''),
-  name: new FormControl(''),
-  phone: new FormControl(''),
-  address: new FormControl(''),
-  birthdate: new FormControl(''),
-  perid: new FormControl('')
-})
+
+  cus_id:any
+  name : any
+  phone: any
+  address: any
+  birthdate: any
+  urole: any
+  email:any
+  password:any
+
 
 constructor(private employeeService: QuillingcardsService,private router:ActivatedRoute,private Router:Router) { }
 
@@ -29,14 +31,15 @@ constructor(private employeeService: QuillingcardsService,private router:Activat
     console.log(this.router.snapshot.params.em_id)
   this.employeeService.getEmployeeByEmpId(this.router.snapshot.params.em_id).subscribe((result)=>{
     console.log(result)
-      this.editEmployee= new FormGroup({
-        em_id: new FormControl(this.router.snapshot.params.em_id),
-        name: new FormControl(result[0].name),
-        phone: new FormControl(result[0].phone),
-        address: new FormControl (result[0].address),
-        birthdate: new FormControl (result[0].birthdate),
-        perid: new FormControl (result[0].permission)
-      })
+      this.cus_id = result[0].cus_id
+      this.name = result[0].name
+      this.phone = result[0].phone
+      this.address = result[0].address
+      this.birthdate = result[0].birthdate
+      this.urole = result[0].urole_id
+      this.email = result[0].email_address
+      this.password = result[0].password
+
     })
   }
   updateemployee(FormControlName: any): void {
@@ -48,6 +51,9 @@ constructor(private employeeService: QuillingcardsService,private router:Activat
       }
     );
   }
+
+
+
 ngOnDestroy(): void{
   this.subEditEmp?.unsubscribe();
 }

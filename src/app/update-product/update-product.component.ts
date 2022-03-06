@@ -1,3 +1,4 @@
+import { product } from './../shared/quilling.model';
 import { Subscriber, Subscription } from 'rxjs';
 import { QuillingcardsService } from './../shared/quillingcards.service';
 import { Component, OnInit } from '@angular/core';
@@ -13,40 +14,60 @@ export class UpdateProductComponent implements OnInit {
 subEditPro: Subscription | undefined;
 
 alert:boolean = false;
-editProduct= new FormGroup({
-  pro_id: new FormControl(''),
-  name: new FormControl(''),
-  quantity: new FormControl(''),
-  price: new FormControl(''),
-  product_pic: new FormControl('')
-})
+
+  pro_id: any
+  pro_name: any
+  quantity_: any
+  price_: any
+  product_pic_: any
+  select_file: any
+  img_id : any
+  new_path : any
+  ispress = false
+
   constructor(private productService: QuillingcardsService,private router:ActivatedRoute,private Router:Router) { }
 
   ngOnInit(): void {
     console.log(this.router.snapshot.params.pro_id)
   this.productService.getProductByProId(this.router.snapshot.params.pro_id).subscribe((result)=>{
     console.log(result)
-      this.editProduct= new FormGroup({
-        pro_id: new FormControl(this.router.snapshot.params.pro_id),
-        name: new FormControl(result[0].name),
-        quantity: new FormControl(result[0].quantity),
-        price: new FormControl (result[0].price),
-        product_pic: new FormControl (result[0].product_pic)
-      })
+      this.pro_id = result[0].product_code
+      this.pro_name = result[0].name
+      this.quantity_ = result[0].quantity
+      this.price_ = result[0].price
+      this.product_pic_ = result[0].imgs_proname
+      this.img_id = result[0].image_id
     })
   }
-  updateproduct(FormControlName: any): void {
-    console.log(FormControlName)
-    this.subEditPro = this.productService.updatePro(FormControlName).subscribe(
-      (feedback) => {
-        alert(feedback.message);
-        this.Router.navigate(['product'])
-      }
-    );
-  }
-ngOnDestroy(): void{
-  this.subEditPro?.unsubscribe();
-}
+  onchange(event:any){
+    this.ispress = true
+    this.select_file = event.target.files[0];
 
+
+  }
+  up_img(){
+    const form_data = new FormData()
+    form_data.append('myFile',this.select_file,this.select_file.name)
+    form_data.append('img_id',this.img_id )
+    form_data.append('img_new_name',this.pro_name)
+    form_data.append('img_path',this.product_pic_)
+    this.productService.updateProduct_img(form_data).subscribe(
+      (img) => {}
+      )
+  }
+  updateproduct(form: any): void {
+      if(this.ispress == true)
+        {
+          this.up_img()
+      }
+      form.pro_id = this.pro_id
+        this.productService.updatePro(form).subscribe(
+          (feedback) => {
+            alert(feedback.message)
+            this.Router.navigate(['product'])
+          }
+        );
+
+      }
 
 }

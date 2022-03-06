@@ -19,7 +19,7 @@ import { UpdateProductComponent } from './update-product/update-product.componen
 import { OrderComponent } from './order/order.component';
 import { BilldetailComponent } from './billdetail/billdetail.component';
 import { NgxPrintModule } from 'ngx-print';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -45,7 +45,8 @@ import { NgxPrintModule } from 'ngx-print';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxPrintModule
+    NgxPrintModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,7 +6,7 @@
 
         <div class="form-group">
           <label for="id">รหัสพนักงาน</label>
-          <input ngModel name="em_id" type="text" class="form-control" id="em_id">
+          <input ngModel name="cus_id" type="text" class="form-control" id="cus_id">
         </div>
 
         <div class="form-group">
@@ -31,11 +31,22 @@
 
         <div class="form-group">
           <label for="perid">สิทธ์การเข้าใช้</label>
-          <select ngModel name="perid" type="text" class="form-control" id="perid">
-            <option value="0">approve</option>
-            <option value="1">disapproved</option>
+          <select ngModel name="urole" type="text" class="form-control" id="urole">
+           <option value="1">admin</option>
+            <option value="2">user</option>
           </select>
         </div>
+
+        <div class="form-group">
+          <label for="address">อีเมล</label>
+          <input ngModel name="email" type="text" class="form-control" id="email">
+        </div>
+
+        <div class="form-group">
+          <label for="address">รหัสผ่าน</label>
+          <input ngModel name="password" type="text" class="form-control" id="password">
+        </div>
+
         <br>
         <button (click)="addemployee(addemployeeForm.value)" type="submit" class="btn btn-primary float-end" >
           เพิ่ม

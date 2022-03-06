@@ -2,7 +2,7 @@ import { QuillingcardsService } from './../shared/quillingcards.service';
 import { product } from './../shared/quilling.model';
 import { Component, OnInit } from '@angular/core';
 import { Subscriber, Subscription } from 'rxjs';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRoute,Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -14,19 +14,26 @@ export class ProductComponent implements OnInit {
   product: any | undefined;
   keyword: string = '';
 
+  totalRecords = ""
+  page = 1
+
+  isshow = true
+
+  openshow = 1
+
   constructor(private productService: QuillingcardsService,private router: Router ) { }
 
   ngOnInit(): void {
     this.productService.getProduct().subscribe(
       (product) => {
-
+        console.log(product)
         this.product = product;
-        console.log(this.product)
+        this.totalRecords = product.length
+        // console.log(this.product)
       }
     );
   }
   search(): void {
-    //alert(this.keyword);
     this.productService.getProductByKey(this.keyword).subscribe(
       (product) => {
         console.log(product);
@@ -34,12 +41,5 @@ export class ProductComponent implements OnInit {
       }
     );
   }
-  delPro(pro_id:any,path:any){
-    this.productService.deleteProduct(pro_id,path).subscribe(
-      (feedbac) => {
-        alert(feedbac.message)
-        window.location.reload()
-      }
-    )
-  }
+
 }

@@ -1,4 +1,4 @@
-import { order } from './../shared/quilling.model';
+import { order, product } from './../shared/quilling.model';
 import { Component, OnInit } from '@angular/core';
 import { QuillingcardsService } from './../shared/quillingcards.service';
 import { Router, RouterModule } from '@angular/router';
@@ -15,25 +15,21 @@ export class OrderComponent implements OnInit {
 
   check :any
 
+  totalRecords = ""
+  page = 1
+
+  isshow = true
+
+  openshow = 1
+
   constructor(private orderService: QuillingcardsService,private router: Router) { }
 
   ngOnInit(): void {
     this.orderService.getOrder().subscribe(
       (order) => {
-        console.log(order);
-        for (let index = 0; index < order.length; index++) {
-      if(index !=0) {
-
-         if(order[index].order_id == order[index-1].order_id){
-           order.splice(index,1)
-          }
-
-
-      }
-
-
-    }
-    this.order = order;
+        console.log(order)
+        this.order = order;
+        this.totalRecords = order.length
       }
     );
   }

@@ -35,7 +35,7 @@ export class RealdashboardComponent implements OnInit {
     );
   }
   getordercount(): void{
-    this.productService.getOrder().subscribe(
+    this.productService.getOrderselect().subscribe(
       (order) => {
         this.totalResults2 = order.length;
       }

@@ -1,52 +1,103 @@
 <div class="container">
-  <h1 class="head">รายการข้อมูลลูกค้า</h1> <br>
+  <h1 class="head">รายการข้อมูลลูกค้า</h1>
 
-  <div class="input-group">
-    <input type="search" [(ngModel)]="keyword" class="form-control rounded" placeholder="Search" aria-label="Search"
-      aria-describedby="search-addon"(ngModelChange)="search()" />
-    <button type="button" class="btn btn-outline-primary" >search</button>
+<div class="row">
+  <div class="col-9 ">
   </div>
-  <br>
+  <div class="col  ">
+    <select class="form-select" (change)="pull()" [(ngModel)] = "openshow" aria-label="Default select example">
+      <option selected value="1">เปิดการใช้งาน</option>
+      <option value="0">ปิดการใช้งาน</option>
+    </select> <br>
+  </div>
+</div>
 
-  <button type="button" class="greenlight btn-block btn-lg btn btn-" style="float: right;"
+<div class="row">
+  <div class="col-9 ">
+  </div>
+  <div class="col  ">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1"> <i><span class="glyphicon glyphicon-search"></span></i> </span>
+      </div>
+      <input type="text" class="form-control" [(ngModel)]="keyword"  placeholder="ค้นหา" aria-label="Username"
+        aria-describedby="basic-addon1" #s  (ngModelChange)="search()" />
+    </div>
+     <br>
+  </div>
+</div>
+
+  <!--<button type="button" class="greenlight btn-block btn-lg btn btn-" style="float: right;"
     [routerLink]="['/addcustomer']">
     <p class="white" style="font-size: 16px;">เพิ่ม</p>
-  </button>
-
+  </button>-->
 
   <table class="table">
     <thead class="thead-dark" style="background-color: #FFE1E1;  ">
       <tr>
-        <th scope="col">ลำดับ</th>
+
         <th scope="col">ID</th>
         <th scope="col">ชื่อ-นามสกุล</th>
         <th scope="col">เบอร์โทรศัพท์</th>
         <th scope="col">ที่อยู่</th>
         <th scope="col">อีเมล</th>
         <th scope="col">วัน/เดือน/ปี</th>
+        <th scope="col">สิทธ์การเข้าใช้</th>
+        <th scope="col">สถานะการใช้งาน</th>
         <th scope="col">แก้ไข</th>
         <th scope="col">ลบ</th>
       </tr>
     </thead>
     <tbody class="info">
-      <tr *ngFor="let b of this.customer; let i = index">
-        <th scope="row">{{ i+1 }}</th>
+      <tr *ngFor="let b of this.customer |paginate: { id:'pagecustomer1',itemsPerPage: 9, currentPage: page, totalItems: totalRecords }; let i = index">
+
         <td>{{b.cus_id}}</td>
         <td>{{b.name}}</td>
         <td>{{b.phone}}</td>
         <td>{{b.address}}</td>
         <td>{{b.email_address}}</td>
         <td>{{b.birthdate}}</td>
-       <td><a routerLink="/updatecustomer/{{b.cus_id}}"><button type="button"
+        <td>{{b.urole}}</td>
+        <td>{{b.users_status}}</td>
+       <td><a [routerLink]="'/updatecustomer/'+b.cus_id"><button type="button"
+              class="orengeyellow btn-block btn-lg btn btn-">
+              <p class="white" style="font-size: 16px;"><span class="glyphicon glyphicon-wrench"></span> แก้ไข</p>
+            </button></a></td>
+              <td><button type="button" class="red btn-block btn-lg btn btn-" (click)="delCus(b.email_address)">
+            <p class="white" style="font-size: 16px;"><span class="glyphicon glyphicon-remove-sign"></span> ปิดการใช้งาน</p>
+          </button></td>
+      </tr>
+
+      <tr *ngFor="let b of this.customer_not_use |paginate: { id:'pagecustomer0',itemsPerPage: 9, currentPage: page, totalItems: totalRecordsnotuse }; let i = index">
+
+        <td>{{b.cus_id}}</td>
+        <td>{{b.name}}</td>
+        <td>{{b.phone}}</td>
+        <td>{{b.address}}</td>
+        <td>{{b.email_address}}</td>
+        <td>{{b.birthdate}}</td>
+        <td>{{b.urole}}</td>
+        <td>{{b.users_status}}</td>
+       <td><a [routerLink]="'/updatecustomer/'+b.cus_id"><button type="button"
               class="orengeyellow btn-block btn-lg btn btn-">
               <p class="white" style="font-size: 16px;">แก้ไข</p>
             </button></a></td>
-              <td><button type="button" class="red btn-block btn-lg btn btn-" (click)="delCus(b.cus_id)">
-            <p class="white" style="font-size: 16px;">ลบ</p>
+              <td><button type="button" class="greenlight btn-block btn-lg btn btn-" (click)="OpenCus(b.email_address)">
+            <p class="white" style="font-size: 16px;">เปิดการใช้งาน</p>
           </button></td>
       </tr>
+
     </tbody>
   </table>
 
-
+  <div class="row">
+    <div class="col-9 ">
+    </div>
+    <div class="col  " *ngIf="openshow == 1">
+      <pagination-controls id="pagecustomer1" [maxSize]="10" (pageChange)="page = $event" *ngIf="isshow"></pagination-controls>
+    </div>
+    <div class="col  " *ngIf="openshow == 0">
+      <pagination-controls id="pagecustomer0" [maxSize]="10" (pageChange)="page = $event" *ngIf="isshow"></pagination-controls>
+    </div>
+  </div>
 </div>
