@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 mx-auto">
+      <h3 class="text-center">เพิ่มเลข tracking</h3>
+      <form #editOrder = "ngForm" (ngSubmit)="updateordertracking(editOrder.value)">
+
+        <div class="form-group">
+          <label for="id">รหัสการสั่งซื้อ</label>
+          <input ngModel name="order_id" type="text" class="form-control"[(ngModel)]="order_id">
+        </div>
+
+        <div class="form-group">
+          <label for="tracking">เลขที่การติดตามสินค้า</label>
+          <input ngModel name="tracking" type="text" class="form-control" [(ngModel)]="tracking">
+        </div>
+
+        <br>
+        <button  type="submit" class="btn btn-primary float-end" >
+          แก้ไข
+        </button>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+

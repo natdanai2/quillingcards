@@ -1,11 +1,37 @@
 <div class="container">
   <h1 class="head">รายการสั่งซื้อ</h1> <br>
 
-  <div class="input-group">
+  <div class="row">
+    <div class="col-9 ">
+    </div>
+    <div class="col  ">
+      <select class="form-select" (change)="pull()" [(ngModel)] = "openshow" aria-label="Default select example">
+        <option selected value="1">รอตรวจสอบการชำระเงิน</option>
+        <option value="0">ชำระเงินแล้ว</option>
+      </select> <br>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-9 ">
+    </div>
+    <div class="col  ">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1"> <i><span class="glyphicon glyphicon-search"></span></i> </span>
+        </div>
+        <input type="text" class="form-control" [(ngModel)]="keyword"  placeholder="ค้นหา" aria-label="Username"
+          aria-describedby="basic-addon1" #s  (ngModelChange)="search()" />
+      </div>
+       <br>
+    </div>
+  </div>
+
+  <!-- <div class="input-group">
     <input type="search" [(ngModel)]="keyword" class="form-control rounded" placeholder="Search" aria-label="Search"
       aria-describedby="search-addon"(ngModelChange)="search()" />
   </div>
-  <br>
+  <br> -->
 
   <table class="table">
     <thead class="thead-dark" style="background-color: #FFE1E1;  ">
@@ -16,25 +42,58 @@
         <th scope="col">สถานะ</th>
         <th scope="col">จำนวนเงินที่จ่าย</th>
         <th scope="col">วัน-เวลา</th>
-
+        <th scope="col">เลขที่การติดตามสินค้า</th>
+        <th scope="col">tracking</th>
         <th scope="col">เปิดดู</th>
+
 
 
       </tr>
     </thead>
     <tbody class="info">
-      <tr *ngFor="let b of this.order|paginate: { id:'pageorder',itemsPerPage: 6, currentPage: page, totalItems: totalRecords }; let i = index" >
-        <th scope="row">{{ i+1 }}</th>
+      <tr *ngFor="let b of this.order|paginate: { id:'pageorder',itemsPerPage: 8, currentPage: page, totalItems: totalRecords }; let i = index;">
+
+        <th scope="row" >{{ i+1 }}</th>
         <td>{{b.order_id}}</td>
         <td>{{b.name}}</td>
         <td>{{b.status}}</td>
         <td>{{b.amount_paid}}</td>
         <td>{{b.date}}</td>
+        <td>{{b.tracking}}</td>
+
+        <td><a [routerLink]="'/updateordertracking/'+b.order_id"><button type="button"
+          class="orengeyellow btn-block btn-lg btn btn-">
+          <p class="white" style="font-size: 16px;"><span class="glyphicon glyphicon-briefcase"></span> เพิ่มเลข tracking</p>
+        </button></a></td>
 
         <td><button type="button" routerLink="/billdetail/{{b.order_id}}"
           class="blue btn-block btn-lg btn btn-">
           <p class="white" style="font-size: 16px;" >เปิดดู</p>
         </button></td>
+
+
+
+      </tr>
+      <tr *ngFor="let b of this.order_not_use|paginate: { id:'pageorder',itemsPerPage: 8, currentPage: page, totalItems: totalRecords }; let i = index;">
+
+        <th scope="row" >{{ i+1 }}</th>
+        <td>{{b.order_id}}</td>
+        <td>{{b.name}}</td>
+        <td>{{b.status}}</td>
+        <td>{{b.amount_paid}}</td>
+        <td>{{b.date}}</td>
+        <td>{{b.tracking}}</td>
+
+        <td><a [routerLink]="'/updateordertracking/'+b.order_id"><button type="button"
+          class="orengeyellow btn-block btn-lg btn btn-">
+          <p class="white" style="font-size: 16px;"><span class="glyphicon glyphicon-briefcase"></span> เพิ่มเลข tracking</p>
+        </button></a></td>
+
+        <td><button type="button" routerLink="/billdetail/{{b.order_id}}"
+          class="blue btn-block btn-lg btn btn-">
+          <p class="white" style="font-size: 16px;" >เปิดดู</p>
+        </button></td>
+
 
 
       </tr>

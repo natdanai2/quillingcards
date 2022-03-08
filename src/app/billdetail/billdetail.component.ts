@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { QuillingcardsService } from './../shared/quillingcards.service';
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 
+
 @Component({
   selector: 'app-billdetail',
   templateUrl: './billdetail.component.html',
@@ -57,5 +58,11 @@ export class BilldetailComponent implements OnInit {
         this.image = order[0].image
       }
     )
+  }
+  updateStatus(order_id:any){
+    this.orderService.updateOrderStatus(order_id,2).subscribe((success)=>{
+      alert(success.message)
+    this.router.navigate(['order'])
+    })
   }
 }

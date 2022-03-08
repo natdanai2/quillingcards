@@ -11,12 +11,19 @@ import { Router, RouterModule } from '@angular/router';
 export class OrderComponent implements OnInit {
   path: string = 'http://localhost/quillingcards';
   order: any;
+  status_id: any;
+  order_not_use: any;
+
   keyword: string = '';
 
   check :any
+  arrayLength:any
 
   totalRecords = ""
+  totalRecordsnotuse = ""
   page = 1
+
+  pre_array:any
 
   isshow = true
 
@@ -25,25 +32,52 @@ export class OrderComponent implements OnInit {
   constructor(private orderService: QuillingcardsService,private router: Router) { }
 
   ngOnInit(): void {
-    this.orderService.getOrder().subscribe(
-      (order) => {
-        console.log(order)
-        this.order = order;
-        this.totalRecords = order.length
-      }
-    );
+   this.pull()
   }
 search(): void {
   //alert(this.keyword);
   this.orderService.getOrderByKey(this.keyword).subscribe(
     (order) => {
+      order = order.filter((test:any, index:any, array:any) =>
+        index === array.findIndex((findTest: { name: any; }) =>
+           findTest.name === test.name
+        )
+     );
       this.order = order;
     }
   );
 }
-delOrder(order_id:any){
-  this.orderService.deleteOrder(order_id).subscribe()
-  window.location.reload()
 
+
+
+pull() {
+  if (this.openshow == 1) {
+    this.order_not_use = Array()
+    this.orderService.getOrder().subscribe(
+      (order) => {
+        order = order.filter((test:any, index:any, array:any) =>
+        index === array.findIndex((findTest: { name: any; }) =>
+           findTest.name === test.name
+        )
+     );
+        this.order = order;
+        this.totalRecords = order.length
+      }
+    );
+  } else {
+    this.order = Array()
+    this.orderService.getOrderselect_not_use().subscribe(
+      (order) => {
+        order = order.filter((test:any, index:any, array:any) =>
+        index === array.findIndex((findTest: { name: any; }) =>
+           findTest.name === test.name
+        )
+     );
+        this.order_not_use = order;
+        this.totalRecordsnotuse = order.length
+      }
+    );
+  }
 }
+
 }

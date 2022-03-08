@@ -20,6 +20,7 @@ import { OrderComponent } from './order/order.component';
 import { BilldetailComponent } from './billdetail/billdetail.component';
 import { NgxPrintModule } from 'ngx-print';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { UpdateOrderTrackingComponent } from './update-order-tracking/update-order-tracking.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AddProductComponent,
     UpdateProductComponent,
     OrderComponent,
-    BilldetailComponent
+    BilldetailComponent,
+    UpdateOrderTrackingComponent
   ],
   imports: [
     BrowserModule,

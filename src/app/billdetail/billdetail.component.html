@@ -40,8 +40,6 @@
 
 
         </tr>
-        <tr *ngFor="let item of order.products">{{item}}</tr>
-
       </tbody>
     </table>
 
@@ -107,7 +105,7 @@
 </div>
 
   <div class="col" style="text-align: right;">
-    <button class="greenlight btn-block btn-lg btn btn-">
+    <button class="greenlight btn-block btn-lg btn btn-" (click)="updateStatus(orderid)">
       <p class="white" style="font-size: 16px;">ยืนยันการชำระเงิน</p>
     </button>
   </div>

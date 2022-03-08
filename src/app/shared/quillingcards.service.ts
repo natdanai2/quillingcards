@@ -31,8 +31,13 @@ export class QuillingcardsService {
   orderUrl: string = 'http://localhost/quillingcards/get_order_orderidV2.php';
   deleteorderUrl: string = 'http://localhost/quillingcards/api_order_del.php';
   orderselectUrl: string = 'http://localhost/quillingcards/api_order_count_dashboard.php';
+  orderselectnotuseUrl: string = 'http://localhost/quillingcards/get_order_change_status.php';
 
   updateemployeestatusUrl: string = 'http://localhost/quillingcards/api_employee_update_status.php';
+
+  updateordertrackingUrl: string = 'http://localhost/quillingcards/api_order_update_tracking.php';
+
+  updateorderstatus: string = 'http://localhost/quillingcards/api_order_update_status.php';
 
   imgUrl: string = 'http://localhost/quillingcards/api_add_img.php';
 
@@ -165,8 +170,13 @@ updateEmp(formValue: any): Observable<any>{
         return this.http.get<any[]>(this.orderUrl);
       }
 
+
       getOrderselect(): Observable<any>{
         return this.http.get<any[]>(this. orderselectUrl);
+      }
+
+      getOrderselect_not_use(): Observable<any>{
+        return this.http.get<any[]>(this. orderselectnotuseUrl);
       }
 
       getOrderByOrderId(order_id:any): Observable<any>{
@@ -193,6 +203,20 @@ updateEmp(formValue: any): Observable<any>{
        };
        return this.http.get<any[]>(this.deleteorderUrl, {params: param});
       }
+
+      updateOrdertracking(formValue: any): Observable<any>{
+        const edit_trackHeader = {'Content-Type':'application/json'};
+          return this.http.put<any>(this.updateordertrackingUrl,formValue,{headers: edit_trackHeader});
+        }
+
+      updateOrderStatus(id_order: any,stat:any): Observable<any>{
+        const param = {
+          'order_id' : id_order,
+          'status' : stat
+        };
+         return this.http.get<any[]>(this.updateorderstatus, {params: param});
+        }
+
       updateProduct_img(img:any): Observable<any>{
 
           return this.http.post<any[]>(this.updateproduct_imgurl, img, {reportProgress: true});
