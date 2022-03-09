@@ -72,8 +72,8 @@
         </button></td>
 
 
-
       </tr>
+
       <tr *ngFor="let b of this.order_not_use|paginate: { id:'pageorder',itemsPerPage: 8, currentPage: page, totalItems: totalRecords }; let i = index;">
 
         <th scope="row" >{{ i+1 }}</th>

@@ -185,7 +185,7 @@ updateEmp(formValue: any): Observable<any>{
        };
        return this.http.get<any[]>(this.orderUrl, {params: param});;
       }
-      getOrderByKey(keyword: string): Observable<order[]>{
+      getOrderByKey(keyword: string): Observable<any>{
         const param = {
            'keyword' : keyword
         };

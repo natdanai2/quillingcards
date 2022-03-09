@@ -39,8 +39,8 @@ search(): void {
   this.orderService.getOrderByKey(this.keyword).subscribe(
     (order) => {
       order = order.filter((test:any, index:any, array:any) =>
-        index === array.findIndex((findTest: { name: any; }) =>
-           findTest.name === test.name
+        index === array.findIndex((findTest: { order_id: any; }) =>
+        findTest.order_id === test.order_id
         )
      );
       this.order = order;
@@ -56,8 +56,8 @@ pull() {
     this.orderService.getOrder().subscribe(
       (order) => {
         order = order.filter((test:any, index:any, array:any) =>
-        index === array.findIndex((findTest: { name: any; }) =>
-           findTest.name === test.name
+        index === array.findIndex((findTest: { order_id: any; }) =>
+        findTest.order_id === test.order_id
         )
      );
         this.order = order;
@@ -69,8 +69,8 @@ pull() {
     this.orderService.getOrderselect_not_use().subscribe(
       (order) => {
         order = order.filter((test:any, index:any, array:any) =>
-        index === array.findIndex((findTest: { name: any; }) =>
-           findTest.name === test.name
+        index === array.findIndex((findTest: { order_id: any; }) =>
+        findTest.order_id === test.order_id
         )
      );
         this.order_not_use = order;
