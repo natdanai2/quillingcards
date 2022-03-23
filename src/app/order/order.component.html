@@ -36,12 +36,13 @@
   <table class="table">
     <thead class="thead-dark" style="background-color: #FFE1E1;  ">
       <tr>
-        <th scope="col">ลำดับ</th>
+
         <th scope="col">ID</th>
         <th scope="col">ชื่อลูกค้า</th>
         <th scope="col">สถานะ</th>
         <th scope="col">จำนวนเงินที่จ่าย</th>
         <th scope="col">วัน-เวลา</th>
+        <th scope="col">ตัวแทนขนส่ง</th>
         <th scope="col">เลขที่การติดตามสินค้า</th>
         <th scope="col">tracking</th>
         <th scope="col">เปิดดู</th>
@@ -51,14 +52,15 @@
       </tr>
     </thead>
     <tbody class="info">
-      <tr *ngFor="let b of this.order|paginate: { id:'pageorder',itemsPerPage: 8, currentPage: page, totalItems: totalRecords }; let i = index;">
+      <tr *ngFor="let b of this.order|paginate: { id:'pageorder1',itemsPerPage: 8, currentPage: page, totalItems: totalRecords }; let i = index;">
 
-        <th scope="row" >{{ i+1 }}</th>
+
         <td>{{b.order_id}}</td>
         <td>{{b.name}}</td>
         <td>{{b.status}}</td>
         <td>{{b.amount_paid}}</td>
         <td>{{b.date}}</td>
+        <td>{{b.trans_name}}</td>
         <td>{{b.tracking}}</td>
 
         <td><a [routerLink]="'/updateordertracking/'+b.order_id"><button type="button"
@@ -74,14 +76,15 @@
 
       </tr>
 
-      <tr *ngFor="let b of this.order_not_use|paginate: { id:'pageorder',itemsPerPage: 8, currentPage: page, totalItems: totalRecords }; let i = index;">
+      <tr *ngFor="let b of this.order_not_use|paginate: { id:'pageorder0',itemsPerPage: 8, currentPage: page, totalItems: totalRecordsnotuse }; let i = index;">
 
-        <th scope="row" >{{ i+1 }}</th>
+
         <td>{{b.order_id}}</td>
         <td>{{b.name}}</td>
         <td>{{b.status}}</td>
         <td>{{b.amount_paid}}</td>
         <td>{{b.date}}</td>
+        <td>{{b.trans_name}}</td>
         <td>{{b.tracking}}</td>
 
         <td><a [routerLink]="'/updateordertracking/'+b.order_id"><button type="button"
@@ -103,7 +106,10 @@
   <div class="row">
     <div class="col-9"></div>
   <div class="col  " *ngIf="openshow == 1">
-    <pagination-controls id="pageorder" [maxSize]="10" (pageChange)="page = $event" *ngIf="isshow"></pagination-controls>
+    <pagination-controls id="pageorder1" [maxSize]="10" (pageChange)="page = $event" *ngIf="isshow"></pagination-controls>
+  </div>
+  <div class="col  " *ngIf="openshow == 0">
+    <pagination-controls id="pageorder0" [maxSize]="10" (pageChange)="page = $event" *ngIf="isshow"></pagination-controls>
   </div>
 </div>
 </div>

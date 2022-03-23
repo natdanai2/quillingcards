@@ -34,11 +34,12 @@ export class BilldetailComponent implements OnInit {
   product_price : string ='';
   total_price : string ='';
   image : string='';
+  amount_paid : string='';
 
   constructor(private orderService: QuillingcardsService,private customerService: QuillingcardsService,private employeeService: QuillingcardsService,private router: Router,private route :ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.orderService.getOrderByOrderId(this.route.snapshot.params['id']).subscribe(
+    this.orderService.getOrdertotal(this.route.snapshot.params['id'],'1').subscribe(
       (order) => {
         this.order = order
         console.log(order)
@@ -46,16 +47,22 @@ export class BilldetailComponent implements OnInit {
         this.product_explode = order[0].products
         this.totalCustomername = order[0].name
         this.totaladdress = order[0].address
-        this.totalemail = order[0].email
+        this.totalemail = order[0].email_address
         this.totalDate = order[0].date
-        this.totalprice = order[0].totalprice
+        this.totalprice = order[0].total_price
 
         this.product_code = order[0].product_code
         this.product_name = order[0].product_name
         this.qty = order[0].qty
+        this.amount_paid = order[0].amount_paid
         this.product_price = order[0].product_price
-        this.total_price = order[0].total_price
+
         this.image = order[0].image
+        this.orderService.getOrdertotal(this.route.snapshot.params['id'],'2').subscribe(orr=>{
+          console.log(orr);
+
+          this.total_price = orr[0].total_price
+        })
       }
     )
   }

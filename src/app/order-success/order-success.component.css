@@ -9,7 +9,7 @@
 
 .container {
   padding: 50px;
-  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08)  ;
+  /* box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08)  ; */
   height: 850px;
   margin: 3rem auto;
 }
@@ -49,4 +49,18 @@
 }
 .blue {
   background: #2FB4FF;
+}
+
+.avengers-end {
+  color: black;
+  position: fixed;
+  bottom: 10%;
+  right: 3%;
+  z-index: 99;
+  width: 18%;
+  padding: 11px;
+  border-radius: 14px;
+  font-weight: 500;
+  transition: all 0.5s;
+  font-size: 18pt;
 }

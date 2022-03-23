@@ -27,7 +27,7 @@ subEditCus: Subscription | undefined;
 
   ngOnInit(): void {
     console.log(this.router.snapshot.params.cus_id)
-  this.customerService.getCustomerByCusId(this.router.snapshot.params.cus_id).subscribe((result)=>{
+  this.customerService.getCustomerdetailByCusId(this.router.snapshot.params.cus_id).subscribe((result)=>{
     console.log(result)
       this.cus_id = result[0].cus_id
       this.name = result[0].name
@@ -40,6 +40,8 @@ subEditCus: Subscription | undefined;
   })
 }
   updatecustomer(FormControlName: any): void {
+    FormControlName.cus_id = this.cus_id
+    FormControlName.email = this.email
     console.log(FormControlName)
     this.subEditCus = this.customerService.updateCus(FormControlName).subscribe(
       (feedback) => {

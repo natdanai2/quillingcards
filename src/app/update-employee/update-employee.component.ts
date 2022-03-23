@@ -29,7 +29,7 @@ constructor(private employeeService: QuillingcardsService,private router:Activat
 
   ngOnInit(): void {
     console.log(this.router.snapshot.params.em_id)
-  this.employeeService.getEmployeeByEmpId(this.router.snapshot.params.em_id).subscribe((result)=>{
+  this.employeeService.getEmployeedetailByEmpId(this.router.snapshot.params.em_id).subscribe((result)=>{
     console.log(result)
       this.cus_id = result[0].cus_id
       this.name = result[0].name
@@ -43,6 +43,8 @@ constructor(private employeeService: QuillingcardsService,private router:Activat
     })
   }
   updateemployee(FormControlName: any): void {
+    FormControlName.cus_id = this.cus_id
+    FormControlName.email = this.email
     console.log(FormControlName)
     this.subEditEmp = this.employeeService.updateEmp(FormControlName).subscribe(
       (feedback) => {
@@ -51,9 +53,6 @@ constructor(private employeeService: QuillingcardsService,private router:Activat
       }
     );
   }
-
-
-
 ngOnDestroy(): void{
   this.subEditEmp?.unsubscribe();
 }

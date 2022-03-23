@@ -21,6 +21,14 @@ import { BilldetailComponent } from './billdetail/billdetail.component';
 import { NgxPrintModule } from 'ngx-print';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { UpdateOrderTrackingComponent } from './update-order-tracking/update-order-tracking.component';
+import { CustomerDetailComponent } from './customer-detail/customer-detail.component';
+import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
+import { AdtobePipe } from './shared/adtobe.pipe';
+import { BankManageComponent } from './bank-manage/bank-manage.component';
+import { BankComponent } from './bank/bank.component';
+import { AddBankComponent } from './add-bank/add-bank.component';
+import { OrderSuccessComponent } from './order-success/order-success.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -39,7 +47,14 @@ import { UpdateOrderTrackingComponent } from './update-order-tracking/update-ord
     UpdateProductComponent,
     OrderComponent,
     BilldetailComponent,
-    UpdateOrderTrackingComponent
+    UpdateOrderTrackingComponent,
+    CustomerDetailComponent,
+    EmployeeDetailComponent,
+    AdtobePipe,
+    BankManageComponent,
+    BankComponent,
+    AddBankComponent,
+    OrderSuccessComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +63,7 @@ import { UpdateOrderTrackingComponent } from './update-order-tracking/update-ord
     FormsModule,
     ReactiveFormsModule,
     NgxPrintModule,
+    SweetAlert2Module.forRoot(),
     NgxPaginationModule
   ],
   providers: [],

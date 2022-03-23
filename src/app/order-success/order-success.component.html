@@ -1,0 +1,81 @@
+<div class="container">
+  <h1 class="head" style="text-align: left;">ประวัติการขาย</h1> <br>
+
+  <div class="row">
+    <div class="col-3 ">
+
+      <span class="input-text" id="basic-addon1"> </span>
+      <label for="validationTooltip01">วันที่เริ่มต้น</label>
+      <input type="date" class="form-control" />
+
+    </div>
+    <div class="col-3">
+      <span class="input-text" id="basic-addon1"> </span>
+      <label for="validationTooltip02">วันที่สิ้นสุด</label>
+      <input type="date" class="form-control" />
+    </div>
+
+    <div class="col 6">
+
+    </div>
+
+    <div class="col  ">
+      <label for="validationToolsearch"></label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1"> <i><span class="glyphicon glyphicon-search"></span></i>
+          </span>
+        </div>
+        <input type="text" class="form-control" [(ngModel)]="keyword" placeholder="ค้นหา" aria-label="Username"
+          aria-describedby="basic-addon1" #s (ngModelChange)="search()" />
+      </div>
+      <br>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3">
+      <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-danger">วันนี้</button>
+        <button type="button" class="btn btn-danger">7 วัน</button>
+        <button type="button" class="btn btn-danger">30 วัน</button>
+        <button type="button" class="btn btn-danger">1 ปี</button>
+        <button type="button" class="btn btn-danger">ทั้งหมด</button>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+
+  <table class="table">
+    <thead class="thead-dark" style="background-color: #FFE1E1;  ">
+      <tr>
+
+        <th scope="col">ID</th>
+        <th scope="col">ชื่อลูกค้า</th>
+        <th scope="col">สถานะ</th>
+        <th scope="col">จำนวนเงินที่จ่าย</th>
+        <th scope="col">วัน-เวลา</th>
+      </tr>
+    </thead>
+    <tbody class="info">
+      <tr *ngFor="let b of this.order">
+        <td>{{b.order_id}}</td>
+        <td>{{b.name}}</td>
+        <td>{{b.status}}</td>
+        <td>{{b.amount_paid}}</td>
+        <td>{{b.date}}</td>
+
+    </tbody>
+
+
+
+  </table>
+
+<div class="avengers-end" style="background-color: #fa9494;">
+  สวัสดี
+
+</div>
+
+</div>

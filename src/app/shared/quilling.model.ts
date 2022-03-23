@@ -43,4 +43,6 @@ export interface order {
 
 }
 
-
+export interface bank {
+  id_bank: any;
+}

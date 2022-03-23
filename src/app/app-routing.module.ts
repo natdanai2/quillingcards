@@ -13,6 +13,12 @@ import { UpdateCustomerComponent } from './update-customer/update-customer.compo
 import { ProductComponent } from './product/product.component';
 import { BilldetailComponent } from './billdetail/billdetail.component';
 import { UpdateOrderTrackingComponent } from './update-order-tracking/update-order-tracking.component';
+import { CustomerDetailComponent } from './customer-detail/customer-detail.component';
+import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
+import { BankManageComponent } from './bank-manage/bank-manage.component';
+import { BankComponent } from './bank/bank.component';
+import { AddBankComponent } from './add-bank/add-bank.component';
+import { OrderSuccessComponent } from './order-success/order-success.component';
 
 const routes: Routes = [
   {path:'',pathMatch: 'full',redirectTo: 'dashboard' },
@@ -28,7 +34,13 @@ const routes: Routes = [
   {path:'updateproduct/:pro_id',component : UpdateProductComponent},
   {path:'order',component : OrderComponent},
   {path:'billdetail/:id',component : BilldetailComponent},
-  {path:'updateordertracking/:order_id',component : UpdateOrderTrackingComponent,}
+  {path:'updateordertracking/:order_id',component : UpdateOrderTrackingComponent,},
+  {path:'customerdetail/:cus_id',component : CustomerDetailComponent},
+  {path:'employeedetail/:em_id',component : EmployeeDetailComponent},
+  {path:'bankmanage/:id_bank',component : BankManageComponent},
+  {path:'bank',component : BankComponent},
+  {path:'addbank',component : AddBankComponent},
+  {path:'ordersuccess',component : OrderSuccessComponent}
 ];
 
 @NgModule({

@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 mx-auto">
+      <h3 class="text-center">แก้ไขธนาคาร</h3>
+      <form #editBank ="ngForm" (ngSubmit)="updatebank(editBank.value)">
+
+        <div class="form-group">
+          <label for="id_bank">ID</label>
+          <input ngModel name="id_bank" type="text" class="form-control"[(ngModel)]="id_bank" disabled>
+        </div>
+
+        <div class="form-group">
+          <label for="id_bank_list">สิทธ์การเข้าใช้</label>
+          <select ngModel name="id_bank_list" type="text" class="form-control" [(ngModel)]="id_bank_list" >
+            <option value="1">ไทยพาณิชย์ (SCB)</option>
+            <option value="2">กสิกรไทย (Kbank)</option>
+            <option value="3">กรุงไทย (KTB)</option>
+            <option value="4">กรุงเทพ (BBL)</option>
+            <option value="5">กรุงศรี (BAY)</option>
+            <option value="6">ธนชาติ (Thanachart)</option>
+            <option value="7">ทหารไทย (TMB)</option>
+            <option value="8">ออมสิน (Government Savings Bank)</option>
+            <option value="9">ธ.ก.ส. (BAAC)</option>
+            <option value="10">เกียรตินาคิน (Kiatnakin)</option>
+            <option value="11">แสตนดาร์ดชาร์เตอร์ด (Standard Chartered)</option>
+            <option value="12">ยูโอบี (UOB)</option>
+            <option value="13">ทิสโก้ (TISCO)</option>
+            <option value="14">ซีไอเอ็มบี (CIMB)</option>
+            <option value="15">ไอซีบีซี (ICBC)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="account_number">เลขบัญชี</label>
+          <input ngModel name="account_number" type="text" class="form-control" [(ngModel)]="account_number">
+        </div>
+
+        <div class="form-group">
+          <label for="account_name">ชื่อบัญชี</label>
+          <input ngModel name="account_name" type="text" class="form-control" [(ngModel)]="account_name">
+        </div>
+<br>
+
+        <button  type="submit" class="btn btn-primary float-end" >
+          ตกลง
+        </button>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+

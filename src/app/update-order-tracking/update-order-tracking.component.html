@@ -2,11 +2,25 @@
   <div class="row">
     <div class="col-lg-6 mx-auto">
       <h3 class="text-center">เพิ่มเลข tracking</h3>
-      <form #editOrder = "ngForm" (ngSubmit)="updateordertracking(editOrder.value)">
+      <form #editOrder="ngForm" (ngSubmit)="updateordertracking(editOrder.value)">
 
         <div class="form-group">
           <label for="id">รหัสการสั่งซื้อ</label>
-          <input ngModel name="order_id" type="text" class="form-control"[(ngModel)]="order_id">
+          <input ngModel name="order_id" type="text" class="form-control" [(ngModel)]="order_id" disabled>
+        </div>
+
+        <div class="form-group">
+          <label for="trans_name">ตัวแทนขนส่ง</label>
+          <select ngModel name="trans_id" type="text" class="form-control" [(ngModel)]="trans_id">
+            <option value="111">ไปรษณีย์ไทย</option>
+            <option value="112">KERRY EXPRESS</option>
+            <option value="113">DHL EXPRESS</option>
+            <option value="114">NINJA VAN</option>
+            <option value="115">J&T EXPRESS</option>
+            <option value="116">FLASH EXPRESS</option>
+            <option value="117">LALAMOVE</option>
+
+          </select>
         </div>
 
         <div class="form-group">
@@ -15,7 +29,7 @@
         </div>
 
         <br>
-        <button  type="submit" class="btn btn-primary float-end" >
+        <button type="submit" class="btn btn-primary float-end">
           แก้ไข
         </button>
       </form>
@@ -23,5 +37,3 @@
     </div>
   </div>
 </div>
-
-

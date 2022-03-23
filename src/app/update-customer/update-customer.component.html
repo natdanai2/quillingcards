@@ -6,7 +6,7 @@
 
         <div class="form-group">
           <label for="id">รหัสลูกค้า</label>
-          <input ngModel name="cus_id" type="text" class="form-control"[(ngModel)]="cus_id">
+          <input ngModel name="cus_id" type="text" class="form-control"[(ngModel)]="cus_id" disabled>
         </div>
 
         <div class="form-group">
@@ -32,18 +32,14 @@
         <div class="form-group">
           <label for="perid">สิทธ์การเข้าใช้</label>
           <select ngModel name="urole" type="text" class="form-control" [(ngModel)]="urole" >
-            <option value="3">customer</option>
+            <option value="1">admin</option>
+            <option value="2">user</option>
           </select>
         </div>
 
         <div class="form-group">
-          <label for="address">อีเมล</label>
-          <input ngModel name="email" type="text" class="form-control" [(ngModel)]="email">
-        </div>
-
-        <div class="form-group">
           <label for="address">รหัสผ่าน</label>
-          <input ngModel name="password" type="text" class="form-control" [(ngModel)]="password">
+          <input ngModel name="password" type="password" class="form-control" [(ngModel)]="password">
         </div>
         <br>
         <button  type="submit" class="btn btn-primary float-end" >

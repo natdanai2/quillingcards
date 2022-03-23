@@ -17,7 +17,7 @@ alert:boolean = false;
 
   pro_id: any
   pro_name: any
-  quantity_: any
+
   price_: any
   product_pic_: any
   select_file: any
@@ -33,7 +33,7 @@ alert:boolean = false;
     console.log(result)
       this.pro_id = result[0].product_code
       this.pro_name = result[0].name
-      this.quantity_ = result[0].quantity
+
       this.price_ = result[0].price
       this.product_pic_ = result[0].imgs_proname
       this.img_id = result[0].image_id
@@ -60,6 +60,7 @@ alert:boolean = false;
         {
           this.up_img()
       }
+
       form.pro_id = this.pro_id
         this.productService.updatePro(form).subscribe(
           (feedback) => {

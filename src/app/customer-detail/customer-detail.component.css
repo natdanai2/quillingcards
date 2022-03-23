@@ -7,6 +7,10 @@
   font-family: 'Prompt', sans-serif;
 }
 
+.b {
+  border-style: solid;
+}
+
 .container {
   padding: 50px;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08)  ;
@@ -45,8 +49,9 @@
 
 .greenlight {
   background: #20AC14;
-
 }
+
+
 .blue {
   background: #2FB4FF;
 }

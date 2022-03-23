@@ -19,6 +19,7 @@ export class AddEmployeeComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 addemployee(emp_value: any): void {
   this.subAddEmp = this.employeeService.addEmployee(emp_value).subscribe(
     (feedback) => {

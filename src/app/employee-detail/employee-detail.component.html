@@ -1,0 +1,63 @@
+
+<div class="container">
+  <h3 class="text-center">รายละเอียดพนักงาน</h3>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col"><table class="table table-borderless">
+      <tr>
+      <th> รหัสพนักงาน  : </th>
+      <td>{{detail.cus_id}}</td>
+      </tr>
+      <tr>
+      <th> ชื่อ-นามสกุล  : </th>
+      <td>{{detail.name}}</td>
+    </tr>
+    <tr>
+      <th> เบอร์โทรศัพท์  : </th>
+      <td>{{detail.phone}}</td>
+    </tr>
+    <tr>
+      <th> อีเมล   : </th>
+      <td>{{detail.email_address}}</td>
+    </tr>
+    <tr>
+      <th> สิทธ์การเข้าใช้  : </th>
+      <td>{{detail.urole}}</td>
+    </tr>
+    <tr>
+      <th> สถานะการใช้งาน  : </th>
+      <td>{{detail.users_status}}</td>
+    </tr>
+    <tr *ngFor="let address of address let i = index">
+      <th> ที่อยู่ {{i+1}}  : </th>
+      <td>{{address.address}}</td>
+    </tr>
+<br>
+<div class="col-8"></div>
+    </table></div>
+    <td style="text-align: right;"><button type="button" routerLink="/employee" class="blue btn-block btn-lg btn btn-">
+      <p class="white" style="font-size: 16px;"><span class="glyphicon glyphicon-chevron-left"></span> ย้อนกลับ
+      </p>
+    </button></td>
+    <div class="col-2">
+
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+

@@ -14,6 +14,7 @@ export class UpdateOrderTrackingComponent implements OnInit {
   alert:boolean = false;
   order_id:any
   tracking:any
+  trans_id:any
 
   constructor(private orderService: QuillingcardsService,private router:ActivatedRoute,private Router:Router) { }
 
@@ -22,10 +23,12 @@ export class UpdateOrderTrackingComponent implements OnInit {
     this.orderService.getOrderByOrderId(this.router.snapshot.params.order_id).subscribe((result)=>{
       console.log(result)
         this.order_id = result[0].order_id
+        this.trans_id = result[0].trans_id
         this.tracking = result[0].tracking
     })
   }
   updateordertracking(FormControlName: any): void {
+    FormControlName.order_id = this.order_id
     console.log(FormControlName)
     this.subEditOrder = this.orderService.updateOrdertracking(FormControlName).subscribe(
       (feedback) => {
