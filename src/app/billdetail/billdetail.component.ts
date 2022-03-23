@@ -2,6 +2,7 @@ import { order, customer, product, employee } from './../shared/quilling.model';
 import { Component, OnInit } from '@angular/core';
 import { QuillingcardsService } from './../shared/quillingcards.service';
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -68,8 +69,35 @@ export class BilldetailComponent implements OnInit {
   }
   updateStatus(order_id:any){
     this.orderService.updateOrderStatus(order_id,2).subscribe((success)=>{
-      alert(success.message)
-    this.router.navigate(['order'])
+      // alert(success.message)
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "คุณต้องการยืนยันออเดอร์นี้หรือไม่?",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire(
+            'Success!',
+            'ยืนยันออเดอร์สำเร็จ.',
+            'success'
+          ).then(() => {
+            this.router.navigate(['order'])
+          })
+        }
+        else if (result.isDismissed)
+        // result.dismiss === Swal.DismissReason.cancel
+        Swal.fire(
+          'Cancel!',
+          'ยกเลิกออเดอร์สำเร็จ.',
+          'error'
+        ).then(() => {
+          this.router.navigate(['order'])
+        })
+      })
     })
   }
 }

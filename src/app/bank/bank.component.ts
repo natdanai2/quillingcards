@@ -4,6 +4,7 @@ import { QuillingcardsService } from './../shared/quillingcards.service';
 import { Component, OnInit } from '@angular/core';
 import { Subscriber, Subscription } from 'rxjs';
 import { ActivatedRoute ,Router, RouterModule } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-bank',
@@ -60,14 +61,29 @@ export class BankComponent implements OnInit {
 
   delBank(bank_id:any){
     this.bankService.deleteBank(bank_id,2).subscribe((success)=>{
-      alert(success.message)
-      this.pull()
+      // alert(success.message)
+      Swal.fire({
+        icon: 'success',
+        title: 'บันทึกสำเร็จ',
+        text: 'ปิดการใช้งานธนาคารนี้',
+
+      }).then(() => {
+        this.pull()
+      })
+
     })
   }
   openBank(bank_id:any){
     this.bankService.deleteBank(bank_id,1).subscribe((success)=>{
-      alert(success.message)
-      this.pull()
+      // alert(success.message)
+      Swal.fire({
+        icon: 'success',
+        title: 'บันทึกสำเร็จ',
+        text: 'เปิดการใช้งานธนาคารนี้',
+
+      }).then(() => {
+        this.pull()
+      })
     })
 
   }

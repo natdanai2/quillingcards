@@ -3,6 +3,7 @@ import { QuillingcardsService } from './../shared/quillingcards.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute,Router } from '@angular/router';
 import { FormGroup, FormControl, FormControlName, } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -48,8 +49,15 @@ constructor(private employeeService: QuillingcardsService,private router:Activat
     console.log(FormControlName)
     this.subEditEmp = this.employeeService.updateEmp(FormControlName).subscribe(
       (feedback) => {
-        alert(feedback.message);
-        this.Router.navigate(['employee'])
+        // alert(feedback.message);
+        Swal.fire({
+          icon: 'success',
+          title: 'บันทึกสำเร็จ',
+          text: 'แก้ไขสำเร็จ'
+        }).then(() => {
+          this.Router.navigate(['employee'])
+        })
+
       }
     );
   }

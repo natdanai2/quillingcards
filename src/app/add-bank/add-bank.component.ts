@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { QuillingcardsService } from '../shared/quillingcards.service';
 import { Subscription } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-bank',
@@ -20,8 +21,16 @@ export class AddBankComponent implements OnInit {
   addbank(bank_value: any): void {
     this.subAddBank = this.bankService.addBank(bank_value).subscribe(
       (feedback) => {
-        alert(feedback.message);
-        this.Router.navigate(['bank'])
+        // alert(feedback.message);
+        Swal.fire({
+          icon: 'success',
+          title: 'บันทึกสำเร็จ',
+          text: 'เพิ่มธนาคารสำเร็จ',
+
+        }).then(() => {
+          this.Router.navigate(['bank'])
+        })
+
       }
     );
   }

@@ -4,6 +4,7 @@ import { employee } from './../shared/quilling.model';
 import { Component, OnInit } from '@angular/core';
 import { Subscriber, Subscription } from 'rxjs';
 import { ActivatedRoute ,Router, RouterModule } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-employee',
@@ -59,14 +60,28 @@ search(): void {
 }
 delEmp(em_id:any){
   this.employeeService.deleteEmployee(em_id,2).subscribe((success)=>{
-    alert(success.message)
-    this.pull()
+    // alert(success.message)
+    Swal.fire({
+      icon: 'success',
+      title: 'บันทึกสำเร็จ',
+      text: 'ปิดการใช้งานบัญชีนี้สำเร็จ',
+
+    }).then(() => {
+      this.pull()
+    })
   })
 }
 openEmp(em_id:any){
   this.employeeService.deleteEmployee(em_id,1).subscribe((success)=>{
-    alert(success.message)
-    this.pull()
+    // alert(success.message)
+    Swal.fire({
+      icon: 'success',
+      title: 'บันทึกสำเร็จ',
+      text: 'เปิดการใช้งานบัญชีนี้สำเร็จ',
+
+    }).then(() => {
+      this.pull()
+    })
   })
 
 }

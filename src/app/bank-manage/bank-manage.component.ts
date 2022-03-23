@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute,Router } from '@angular/router';
 import { Subscriber, Subscription } from 'rxjs';
 import { QuillingcardsService } from './../shared/quillingcards.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-bank-manage',
@@ -36,8 +37,16 @@ account_name:any
     console.log(FormControlName)
     this.subEditBank = this.bankService.updateBank(FormControlName).subscribe(
       (feedback) => {
-        alert(feedback.message);
-        this.Router.navigate(['bank'])
+        // alert(feedback.message);
+        Swal.fire({
+          icon: 'success',
+          title: 'บันทึกสำเร็จ',
+          text: 'แก้ไขธนาคารสำเร็จ',
+
+        }).then(() => {
+          this.Router.navigate(['bank'])
+        })
+
       }
     );
   }

@@ -12,7 +12,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
 import { CustomerComponent } from './customer/customer.component';
-import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { UpdateCustomerComponent } from './update-customer/update-customer.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
@@ -41,7 +40,6 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     AddEmployeeComponent,
     UpdateEmployeeComponent,
     CustomerComponent,
-    AddCustomerComponent,
     UpdateCustomerComponent,
     AddProductComponent,
     UpdateProductComponent,

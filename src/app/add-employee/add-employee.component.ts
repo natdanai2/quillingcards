@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { QuillingcardsService } from './../shared/quillingcards.service';
 import { Subscriber, Subscription } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-employee',
@@ -23,8 +24,15 @@ export class AddEmployeeComponent implements OnInit {
 addemployee(emp_value: any): void {
   this.subAddEmp = this.employeeService.addEmployee(emp_value).subscribe(
     (feedback) => {
-      alert(feedback.message);
-      this.Router.navigate(['employee'])
+      // alert(feedback.message);
+      Swal.fire({
+        icon: 'success',
+        title: 'บันทึกสำเร็จ',
+
+      }).then(() => {
+        this.Router.navigate(['employee'])
+      })
+
     }
   );
 }

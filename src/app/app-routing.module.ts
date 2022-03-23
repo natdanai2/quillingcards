@@ -1,7 +1,6 @@
 import { OrderComponent } from './order/order.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
 import { AddProductComponent } from './add-product/add-product.component';
-import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { RealdashboardComponent } from './realdashboard/realdashboard.component';
 import { NgModule } from '@angular/core';
@@ -27,7 +26,6 @@ const routes: Routes = [
   {path:'addemployee',component : AddEmployeeComponent},
   {path:'updateemployee/:em_id',component : UpdateEmployeeComponent,},
   {path:'customer',component : CustomerComponent},
-  {path:'addcustomer',component : AddCustomerComponent},
   {path:'updatecustomer/:cus_id',component : UpdateCustomerComponent,},
   {path:'product',component : ProductComponent},
   {path:'addproduct',component : AddProductComponent},

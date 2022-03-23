@@ -3,6 +3,7 @@ import { product } from './../shared/quilling.model';
 import { Component, OnInit } from '@angular/core';
 import { Subscriber, Subscription } from 'rxjs';
 import { ActivatedRoute,Router, RouterModule } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-product',
@@ -58,14 +59,28 @@ export class ProductComponent implements OnInit {
 
   delPro(pro_id:any){
     this.productService.deleteProduct(pro_id,2).subscribe((success)=>{
-      alert(success.message)
-      this.pull()
+      // alert(success.message)
+      Swal.fire({
+        icon: 'success',
+        title: 'บันทึกสำเร็จ',
+        text: 'ปิดการใช้งานสินค้านี้สำเร็จ',
+
+      }).then(() => {
+        this.pull()
+      })
     })
   }
   openPro(pro_id:any){
     this.productService.deleteProduct(pro_id,1).subscribe((success)=>{
-      alert(success.message)
-      this.pull()
+      // alert(success.message)
+      Swal.fire({
+        icon: 'success',
+        title: 'บันทึกสำเร็จ',
+        text: 'เปิดการใช้งานสินค้านี้สำเร็จ',
+
+      }).then(() => {
+        this.pull()
+      })
     })
 
   }

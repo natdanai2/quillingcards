@@ -3,6 +3,7 @@ import { QuillingcardsService } from './../shared/quillingcards.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute,Router } from '@angular/router';
 import { FormGroup, FormControl, FormControlName, } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-update-customer',
@@ -45,8 +46,15 @@ subEditCus: Subscription | undefined;
     console.log(FormControlName)
     this.subEditCus = this.customerService.updateCus(FormControlName).subscribe(
       (feedback) => {
-        alert(feedback.message);
-        this.Router.navigate(['customer'])
+        // alert(feedback.message);
+        Swal.fire({
+          icon: 'success',
+          title: 'บันทึกสำเร็จ',
+          text: 'แก้ไขสำเร็จ'
+        }).then(() => {
+          this.Router.navigate(['customer'])
+        })
+
       }
     );
   }

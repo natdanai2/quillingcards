@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscriber, Subscription } from 'rxjs';
 import { QuillingcardsService } from './../shared/quillingcards.service';
 import { ActivatedRoute,Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-update-order-tracking',
@@ -19,6 +20,7 @@ export class UpdateOrderTrackingComponent implements OnInit {
   constructor(private orderService: QuillingcardsService,private router:ActivatedRoute,private Router:Router) { }
 
   ngOnInit(): void {
+
     console.log(this.router.snapshot.params.order_id)
     this.orderService.getOrderByOrderId(this.router.snapshot.params.order_id).subscribe((result)=>{
       console.log(result)
@@ -32,8 +34,16 @@ export class UpdateOrderTrackingComponent implements OnInit {
     console.log(FormControlName)
     this.subEditOrder = this.orderService.updateOrdertracking(FormControlName).subscribe(
       (feedback) => {
-        alert(feedback.message);
-        this.Router.navigate(['order'])
+        // alert(feedback.message);
+        Swal.fire({
+          icon: 'success',
+          title: 'บันทึกสำเร็จ',
+          text: 'เพิ่ม tracking สำเร็จ',
+
+        }).then(() => {
+          this.Router.navigate(['order'])
+        })
+
       }
     );
   }

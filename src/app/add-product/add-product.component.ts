@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { QuillingcardsService } from './../shared/quillingcards.service';
 import { Subscriber, Subscription } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-product',
@@ -34,8 +35,14 @@ export class AddProductComponent implements OnInit {
           this.subAddPro = this.productService.addProduct(pro_value).subscribe(
             (feedback) => {
               console.log(feedback)
-              alert(feedback.message)
-              this.Router.navigate(['product'])
+              // alert(feedback.message)
+              Swal.fire({
+                icon: 'success',
+                title: 'บันทึกสำเร็จ',
+                text: 'เพิ่มสินค้าสำเร็จ',
+              }).then(() => {
+                this.Router.navigate(['product'])
+              })
             }
           )
 

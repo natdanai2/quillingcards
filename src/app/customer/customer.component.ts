@@ -4,6 +4,7 @@ import {Subscriber,Subscription} from 'rxjs';
 import {ActivatedRoute,Router,RouterModule} from '@angular/router';
 import {customer} from '../shared/quilling.model';
 import {HttpClient} from '@angular/common/http';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-customer',
@@ -60,14 +61,29 @@ export class CustomerComponent implements OnInit {
 
   delCus(cus_id: any) {
     this.customerService.deleteCustomer(cus_id,2).subscribe((success)=>{
-      alert(success.message)
-      this.pull()
+      // alert(success.message)
+      Swal.fire({
+        icon: 'success',
+        title: 'บันทึกสำเร็จ',
+        text: 'ปิดการใช้งานบัญชีนี้สำเร็จ',
+
+      }).then(() => {
+        this.pull()
+      })
+
     })
   }
   OpenCus(cus_id: any) {
     this.customerService.deleteCustomer(cus_id,1).subscribe((success)=>{
-      alert(success.message)
-      this.pull()
+      // alert(success.message)
+      Swal.fire({
+        icon: 'success',
+        title: 'บันทึกสำเร็จ',
+        text: 'เปิดการใช้งานบัญชีนี้สำเร็จ',
+
+      }).then(() => {
+        this.pull()
+      })
     })
   }
 
