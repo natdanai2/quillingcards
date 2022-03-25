@@ -33,8 +33,9 @@ export class UpdateOrderTrackingComponent implements OnInit {
     FormControlName.order_id = this.order_id
     console.log(FormControlName)
     this.subEditOrder = this.orderService.updateOrdertracking(FormControlName).subscribe(
-      (feedback) => {
-        // alert(feedback.message);
+      (result) => { if(result.status == "Success"){
+        // console.log(result)
+        // alert(result.message);
         Swal.fire({
           icon: 'success',
           title: 'บันทึกสำเร็จ',
@@ -43,7 +44,19 @@ export class UpdateOrderTrackingComponent implements OnInit {
         }).then(() => {
           this.Router.navigate(['order'])
         })
+      }
+      else {
+        console.log(result)
+        alert(result.message);
+        Swal.fire({
+          icon: 'error',
+          title: result.message,
+          text: 'เพิ่ม tracking ไม่สำเร็จ',
 
+        }).then(() => {
+          this.Router.navigate(['order'])
+        })
+      }
       }
     );
   }

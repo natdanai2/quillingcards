@@ -19,9 +19,12 @@
           <input ngModel name="phone" type="text" class="form-control" [(ngModel)]="phone">
         </div>
 
-        <div class="form-group">
-          <label for="address">ที่อยู่</label>
-          <input ngModel name="address" type="text" class="form-control" [(ngModel)]="address">
+        <div class="form-group" *ngFor="let item of address let i = index">
+          <label>ที่อยู่ {{i+1}}</label>
+          <div class="row">
+            <div class="col-10"> <input type="text" class="form-control" value={{item.address}} disabled style="border: 0ch;"></div>
+            <div class="col-2"> <a (click)="update_address(i)"><span class="glyphicon glyphicon-wrench"></span> แก้ไข</a></div>
+          </div>
         </div>
 
         <div class="form-group">

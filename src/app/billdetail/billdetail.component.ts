@@ -68,7 +68,7 @@ export class BilldetailComponent implements OnInit {
     )
   }
   updateStatus(order_id:any){
-    this.orderService.updateOrderStatus(order_id,2).subscribe((success)=>{
+
       // alert(success.message)
       Swal.fire({
         title: 'Are you sure?',
@@ -77,7 +77,8 @@ export class BilldetailComponent implements OnInit {
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes'
+        confirmButtonText: 'Yes',
+        cancelButtonText: "CANCEL"
       }).then((result) => {
         if (result.isConfirmed) {
           Swal.fire(
@@ -85,19 +86,20 @@ export class BilldetailComponent implements OnInit {
             'ยืนยันออเดอร์สำเร็จ.',
             'success'
           ).then(() => {
-            this.router.navigate(['order'])
+            this.orderService.updateOrderStatus(order_id,2).subscribe((success)=>{
+              this.router.navigate(['order'])
+            })
           })
         }
-        else if (result.isDismissed)
+        // else if (result.isDismissed)
         // result.dismiss === Swal.DismissReason.cancel
-        Swal.fire(
-          'Cancel!',
-          'ยกเลิกออเดอร์สำเร็จ.',
-          'error'
-        ).then(() => {
-          this.router.navigate(['order'])
-        })
+        // Swal.fire(
+        //   'Cancel!',
+        //   'ยกเลิกการยืนยันสำเร็จ.',
+        //   'error'
+        // ).then(() => {
+        //   this.router.navigate(['order'])
+        // })
       })
-    })
   }
 }

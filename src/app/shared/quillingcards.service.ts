@@ -216,7 +216,8 @@ updateEmp(formValue: any): Observable<any>{
       }
 
       getOrderselect_not_use(): Observable<any>{
-        return this.http.get<any[]>(this. orderselectnotuseUrl);
+
+        return this.http.get<any[]>(this. orderselectnotuseUrl)
       }
 
       getOrderByOrderId(order_id:any): Observable<any>{
@@ -237,6 +238,12 @@ updateEmp(formValue: any): Observable<any>{
            'keyword' : keyword
         };
         return this.http.get<order[]>(this.orderUrl, {params: param});
+       }
+       getOrderByKey2(keyword: string): Observable<any>{
+        const param = {
+           'keyword' : keyword
+        };
+        return this.http.get<order[]>(this.orderselectnotuseUrl, {params: param});
        }
        getBycusId(keyword: string): Observable<order[]>{
         const param = {

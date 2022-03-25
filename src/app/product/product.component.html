@@ -51,7 +51,7 @@
         <th scope="col">ราคา</th>
         <th scope="col">สถานะ</th>
         <th scope="col">แก้ไข</th>
-        <th scope="col">ลบ</th>
+        <th scope="col">เปลี่ยนสถานะ</th>
 
       </tr>
     </thead>
@@ -87,8 +87,8 @@
               class="orengeyellow btn-block btn-lg btn btn-">
               <p class="white" style="font-size: 16px;">แก้ไข</p>
             </button></a></td>
-        <td><button type="button" class="red btn-block btn-lg btn btn-" (click)="openPro(b.product_code)">
-            <p class="white" style="font-size: 16px;"><span class="glyphicon glyphicon-remove-sign"></span> ปิดการใช้งาน
+        <td><button type="button" class="greenlight btn-block btn-lg btn btn-" (click)="openPro(b.product_code)">
+            <p class="white" style="font-size: 16px;"><span class="glyphicon glyphicon-ok-sign"></span> เปิดการใช้งาน
             </p>
           </button></td>
       </tr>
