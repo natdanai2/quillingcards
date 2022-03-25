@@ -4,6 +4,7 @@ import { QuillingcardsService } from './../shared/quillingcards.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute,Router } from '@angular/router';
 import { FormGroup, FormControl, FormControlName, } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-update-product',
@@ -64,8 +65,14 @@ alert:boolean = false;
       form.pro_id = this.pro_id
         this.productService.updatePro(form).subscribe(
           (feedback) => {
-            alert(feedback.message)
-            this.Router.navigate(['product'])
+            // alert(feedback.message)
+            Swal.fire({
+              icon: 'success',
+              title: 'บันทึกสำเร็จ',
+              text: 'แก้ไขสินค้าสำเร็จ'
+            }).then(() => {
+              this.Router.navigate(['product'])
+            })
           }
         );
 

@@ -54,19 +54,17 @@
 
       </div>
       <div class="row">
-        <div class="col">
-          <tr>ธนาคาร SCB บ/ช 246789456</tr>
-          <td>จำนวนเงินที่โอน {{amount_paid}} บาท</td>
-          <tr>วันที่โอน {{ totalDate }} </tr>
+        <div class="col-12">
+          <tr><td>จำนวนเงินที่โอน {{amount_paid}} บาท</td></tr>
+
+         <tr><td>วันที่โอน {{ totalDate | date:'dd/MM/YYYY เวลา HH:mm น.' }} </td></tr>
         </div>
-        <div class="col-5">
+        <div class="col-1">
 
         </div>
 
       </div>
     </div>
-
-
   </div>
 <div class="row">
   <div class="col">
@@ -96,7 +94,7 @@
   <div class="col">
     <button printSectionId="section" ngxPrint type="button" [useExistingCss]="true"
     class="blue btn-block btn-lg btn btn-">
-    <p class="white" style="font-size: 16px;">พิมพ์ใบเสร็จ</p>
+    <p class="white" style="font-size: 16px;"><span class="glyphicon glyphicon-print"></span> พิมพ์ใบเสร็จ</p>
   </button>
   </div>
 
@@ -106,7 +104,7 @@
 
   <div class="col" style="text-align: right;">
     <button class="greenlight btn-block btn-lg btn btn-" (click)="updateStatus(orderid)">
-      <p class="white" style="font-size: 16px;">ยืนยันการชำระเงิน</p>
+      <p class="white" style="font-size: 16px;"><span class="glyphicon glyphicon-thumbs-up"></span> ยืนยันการชำระเงิน</p>
     </button>
   </div>
 

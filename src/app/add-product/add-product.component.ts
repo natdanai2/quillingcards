@@ -31,7 +31,6 @@ export class AddProductComponent implements OnInit {
       console.log(form_data)
       this.subAddPro = this.productService.addProduct(pro_value).subscribe(
         (feedback) => {
-
           form_data.append('proid',feedback.pro_id)
           this.productService.AddPro_img(form_data).subscribe(
             (result) => {
