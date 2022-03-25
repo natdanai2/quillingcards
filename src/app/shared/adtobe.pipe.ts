@@ -12,7 +12,9 @@ export class AdtobePipe implements PipeTransform {
     ];
     const currentDate = new Date(value);
     return `วันที่ ${currentDate.getDate()}
-            ${monthName[currentDate.getDate()]}
-            ${currentDate.getFullYear() + 543}`;
+            ${monthName[currentDate.getMonth()]}
+            ${currentDate.getFullYear() + 543}
+           เวลา ${currentDate.getHours()}:${currentDate.getMinutes()} น.`;
   }
 }
+

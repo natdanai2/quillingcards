@@ -51,7 +51,7 @@
   <table class="table">
     <thead class="thead-dark" style="background-color: #D5BDE4;  ">
       <tr>
-
+        <th scope="col">ลำดับ</th>
         <th scope="col">ID</th>
         <th scope="col">ชื่อลูกค้า</th>
         <th scope="col">สถานะ</th>
@@ -60,12 +60,14 @@
       </tr>
     </thead>
     <tbody class="info">
-      <tr *ngFor="let b of this.order">
+      <tr *ngFor="let b of this.order; let i = index">
+        <td scope="row">{{ i+1 }}</td>
         <td>{{b.order_id}}</td>
         <td>{{b.name}}</td>
         <td>{{b.status}}</td>
         <td>{{b.amount_paid}}</td>
-        <td>{{b.date | date:'dd/MM/YYYY เวลา HH:mm น.'}}</td>
+        <!-- <td>{{b.date | date:'dd/MM/YYYY เวลา HH:mm น.'}}</td> -->
+        <td>{{b.date | date:'medium' | adtobe}}</td>
 
     </tbody>
 
