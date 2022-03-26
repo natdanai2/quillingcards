@@ -48,4 +48,10 @@
   color: white;
 }
 
+.paper{
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+  box-shadow: 2px 5px #888888;
+}
 

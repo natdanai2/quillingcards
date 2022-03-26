@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'adtobe'
+  name: 'adtobe2'
 })
-export class AdtobePipe implements PipeTransform {
+export class Adtobe2Pipe implements PipeTransform {
 
   transform(value: any, ...args: any[]): any {
     const monthName = [
@@ -11,11 +11,10 @@ export class AdtobePipe implements PipeTransform {
       'กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'
     ];
     const currentDate = new Date(value);
-    return `วันที่ ${currentDate.getDate()}
+    return `${currentDate.getDate()}
             ${monthName[currentDate.getMonth()]}
             ${currentDate.getFullYear() + 543}
-           เวลา ${currentDate.getHours()}:${currentDate.getMinutes()} น.`;
+            `;
   }
+
 }
-
-

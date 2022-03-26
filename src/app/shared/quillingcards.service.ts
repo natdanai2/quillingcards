@@ -8,6 +8,9 @@ import { product } from './quilling.model';
 import { order } from './quilling.model';
 import { bank } from './quilling.model';
 
+import { format,add } from 'date-fns';
+import { th } from 'date-fns/locale';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -220,6 +223,14 @@ updateEmp(formValue: any): Observable<any>{
         return this.http.get<any[]>(this. orderselectnotuseUrl)
       }
 
+      getOrderselect_not_use_date(date_start:any,date_end:any): Observable<any>{
+        const param = {
+          'date_start' : date_start,
+          'date_end' : date_end
+       };
+        return this.http.get<any[]>(this. orderselectnotuseUrl)
+      }
+
       getOrderByOrderId(order_id:any): Observable<any>{
         const param = {
           'order_id' : order_id
@@ -239,12 +250,14 @@ updateEmp(formValue: any): Observable<any>{
         };
         return this.http.get<order[]>(this.orderUrl, {params: param});
        }
-       getOrderByKey2(keyword: string): Observable<any>{
+       getOrderByKey2(keyword:any,date_start:any,date_end:any): Observable<any>{
         const param = {
-           'keyword' : keyword
-        };
-        return this.http.get<order[]>(this.orderselectnotuseUrl, {params: param});
-       }
+          'keyword':keyword,
+          'date_start' : date_start,
+          'date_end' : date_end
+       };
+        return this.http.get<any[]>(this.orderselectnotuseUrl, {params: param})
+      }
        getBycusId(keyword: string): Observable<order[]>{
         const param = {
            'cus_id' : keyword
@@ -319,5 +332,10 @@ updateEmp(formValue: any): Observable<any>{
            };
            return this.http.get<any[]>(this.deletebankUrl, {params: param});
           }
+
+          set_date(date:any){
+            var show_date = format(add(new Date(date),{years:543}),'dd MMMM yyyy HH.MM น.',{locale:th})
+            return show_date
+           }
 }
 

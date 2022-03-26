@@ -43,8 +43,8 @@
         <th scope="col">จำนวนเงินที่จ่าย</th>
         <th scope="col">วัน/เดือน/ปี</th>
         <th scope="col">ตัวแทนขนส่ง</th>
-        <th scope="col">เลขที่การติดตามสินค้า</th>
-        <th scope="col">tracking</th>
+        <th scope="col">เลข tracking</th>
+        <th scope="col">จัดการ tracking</th>
         <th scope="col">เปิดดู</th>
 
       </tr>
@@ -57,7 +57,7 @@
         <td>{{b.name}}</td>
         <td>{{b.status}}</td>
         <td>{{b.amount_paid}}</td>
-        <td>{{b.date | date:'dd/MM/YYYY'}}</td>
+        <td>{{b.date | date | adtobe2}}</td>
         <td>{{b.trans_name}}</td>
         <td>{{b.tracking}}</td>
 
@@ -81,7 +81,7 @@
         <td>{{b.name}}</td>
         <td>{{b.status}}</td>
         <td>{{b.amount_paid}}</td>
-        <td>{{b.date | date:'dd/MM/YYYY'}}</td>
+        <td>{{b.date | date | adtobe2 }}</td>
         <td>{{b.trans_name}}</td>
         <td>{{b.tracking}}</td>
 

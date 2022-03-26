@@ -55,8 +55,7 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <tr><td>จำนวนเงินที่โอน {{amount_paid}} บาท</td></tr>
-
+          <tr><td>จำนวนเงินที่โอน {{amount_paid}} บาท</td></tr> <div></div>
          <tr><td>วันที่โอน {{ totalDate | date:'dd/MM/YYYY เวลา HH:mm น.' }} </td></tr>
         </div>
         <div class="col-1">
@@ -95,7 +94,7 @@
     <button printSectionId="section" ngxPrint type="button" [useExistingCss]="true"
     class="blue btn-block btn-lg btn btn-">
     <p class="white" style="font-size: 16px;"><span class="glyphicon glyphicon-print"></span> พิมพ์ใบเสร็จ</p>
-  </button>
+    </button>
   </div>
 
 <div class="col-5">

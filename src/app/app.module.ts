@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
@@ -28,6 +29,27 @@ import { BankComponent } from './bank/bank.component';
 import { AddBankComponent } from './add-bank/add-bank.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { NgxMaskModule,IConfig } from 'ngx-mask';
+import { DateFnsModule } from 'ngx-date-fns';
+import { th } from 'date-fns/locale';
+import { DateFnsConfigurationService } from 'ngx-date-fns';
+import {
+  FormatPipeModule,
+  MinPipeModule,
+  MaxPipeModule,
+  FormatDistanceToNowPipeModule,
+  WeekdayNamePipeModule,
+  ParsePipeModule
+} from 'ngx-date-fns';
+import { Adtobe2Pipe } from './shared/adtobe2.pipe';
+
+const thaiConfig = new DateFnsConfigurationService();
+thaiConfig.setLocale(th);
+
+const maskConfig: Partial<IConfig> = {
+  validation: false,
+};
+
 
 @NgModule({
   declarations: [
@@ -52,7 +74,8 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     BankManageComponent,
     BankComponent,
     AddBankComponent,
-    OrderSuccessComponent
+    OrderSuccessComponent,
+    Adtobe2Pipe
   ],
   imports: [
     BrowserModule,
@@ -61,10 +84,23 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     FormsModule,
     ReactiveFormsModule,
     NgxPrintModule,
+    RouterModule,
     SweetAlert2Module.forRoot(),
-    NgxPaginationModule
+    NgxPaginationModule,
+    BrowserModule,
+    DateFnsModule.forRoot(),
+    FormatPipeModule,
+    MinPipeModule,
+    MaxPipeModule,
+    FormatDistanceToNowPipeModule,
+    WeekdayNamePipeModule,
+    ParsePipeModule,
+    NgxMaskModule.forRoot(maskConfig)
+
   ],
-  providers: [],
+  providers: [
+    { provide: DateFnsConfigurationService, useValue: thaiConfig } // <-- All pipes in French by default
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

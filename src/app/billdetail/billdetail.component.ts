@@ -3,6 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { QuillingcardsService } from './../shared/quillingcards.service';
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
+import { DateFnsModule } from 'ngx-date-fns';
+import { th } from 'date-fns/locale';
+import { format, formatDistance, formatRelative, subDays } from 'date-fns'
+import { add } from 'date-fns';
 
 
 @Component({
@@ -15,6 +19,7 @@ export class BilldetailComponent implements OnInit {
   order: any
   customer: customer[] | undefined;
   employee: employee[] | undefined;
+  detail_order : any
   orderid: any
   product: any
   product_explode: any
@@ -37,9 +42,18 @@ export class BilldetailComponent implements OnInit {
   image : string='';
   amount_paid : string='';
 
+  option ={
+    locale:th
+  }
+  datee1 :any
+
   constructor(private orderService: QuillingcardsService,private customerService: QuillingcardsService,private employeeService: QuillingcardsService,private router: Router,private route :ActivatedRoute) { }
 
   ngOnInit(): void {
+
+
+     console.log(this.datee1)
+
     this.orderService.getOrdertotal(this.route.snapshot.params['id'],'1').subscribe(
       (order) => {
         this.order = order
@@ -64,6 +78,12 @@ export class BilldetailComponent implements OnInit {
 
           this.total_price = orr[0].total_price
         })
+        this.datee1 = format(add(new Date(this.totalDate),{years:543}), 'dd MMMM yyyy',{locale:th})
+        this.detail_order = order
+        var result = order.reduce(function(_this:number, val:any|undefined) {
+          return _this + Number(val.log_Product_Sum)
+        }, 0);
+        this.sum = result
       }
     )
   }
