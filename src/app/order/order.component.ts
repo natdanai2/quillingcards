@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { order, product } from './../shared/quilling.model';
 import { Component, OnInit } from '@angular/core';
 import { QuillingcardsService } from './../shared/quillingcards.service';
@@ -22,12 +23,19 @@ export class OrderComponent implements OnInit {
   totalRecords = ""
   totalRecordsnotuse = ""
   page = 1
+  totalpaid = 0
 
   pre_array:any
 
   isshow = true
 
   openshow = 1
+
+  date_start = ''
+  date_end : any = formatDate(Date.now() + ( 3600 * 1000 * 24) ,'y/M/d','en-US')
+  date_minus : any
+
+  show_date : any
 
   constructor(private orderService: QuillingcardsService,private router: Router) { }
 
@@ -36,7 +44,8 @@ export class OrderComponent implements OnInit {
   }
 search(): void {
   //alert(this.keyword);
-  this.orderService.getOrderByKey(this.keyword).subscribe(
+  if(this.keyword != ''){
+  this.orderService.getOrderByKey2(this.keyword,this.date_start,this.date_end).subscribe(
     (order) => {
       order = order.filter((test:any, index:any, array:any) =>
         index === array.findIndex((findTest: { order_id: any; }) =>
@@ -44,8 +53,15 @@ search(): void {
         )
      );
       this.order = order;
+      for (let index = 0; index < order.length; index++) {
+        this.totalpaid +=parseInt(this.order[index].amount_paid)
+      }
     }
   );
+  }
+  else{
+    this.pull()
+  }
 }
 
 
@@ -65,19 +81,22 @@ pull() {
       }
     );
   } else {
+    this.totalpaid = 0
     this.order = Array()
-    this.orderService.getOrderselect_not_use().subscribe(
+    console.log(this.date_start +' '+ this.date_end)
+    this.orderService.getOrderByKey2(this.keyword,this.date_start,this.date_end).subscribe(
       (order) => {
         order = order.filter((test:any, index:any, array:any) =>
         index === array.findIndex((findTest: { order_id: any; }) =>
         findTest.order_id === test.order_id
         )
      );
-        this.order_not_use = order;
-        this.totalRecordsnotuse = order.length
+        this.order = order;
+        for (let index = 0; index < order.length; index++) {
+          this.totalpaid +=parseInt(this.order[index].amount_paid)
+        }
       }
     );
   }
 }
-
 }
