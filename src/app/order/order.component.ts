@@ -42,50 +42,50 @@ export class OrderComponent implements OnInit {
   ngOnInit(): void {
    this.pull()
   }
-search(): void {
-  //alert(this.keyword);
+// search(): void {
+//   //alert(this.keyword);
 
-  if(this.keyword != ''){
-    this.orderService.getOrderByKey(this.keyword).subscribe(
-      (order) => {
-        order = order.filter((test:any, index:any, array:any) =>
-          index === array.findIndex((findTest: { order_id: any; }) =>
-          findTest.order_id === test.order_id
-          )
-       );
-        this.order = order;
-        for (let index = 0; index < order.length; index++) {
-          this.totalpaid +=parseInt(this.order[index].amount_paid)
-        }
-      }
-    );
-    }
-  else if(this.keyword != ''){
-      this.orderService.getOrderByKey2(this.keyword,this.date_start,this.date_end).subscribe(
-        (order) => {
-          order = order.filter((test:any, index:any, array:any) =>
-            index === array.findIndex((findTest: { order_id: any; }) =>
-            findTest.order_id === test.order_id
-            )
-         );
-          this.order = order;
-          for (let index = 0; index < order.length; index++) {
-            this.totalpaid +=parseInt(this.order[index].amount_paid)
-          }
-        }
-      );
-      }
-  else{
-    this.pull()
-  }
-}
+//   if(this.keyword != ''){
+//     this.orderService.getOrderByKey(this.keyword).subscribe(
+//       (order) => {
+//         order = order.filter((test:any, index:any, array:any) =>
+//           index === array.findIndex((findTest: { order_id: any; }) =>
+//           findTest.order_id === test.order_id
+//           )
+//        );
+//         this.order = order;
+//         for (let index = 0; index < order.length; index++) {
+//           this.totalpaid +=parseInt(this.order[index].amount_paid)
+//         }
+//       }
+//     );
+//     }
+//   else if(this.keyword != ''){
+//       this.orderService.getOrderByKey2(this.keyword,this.date_start,this.date_end).subscribe(
+//         (order) => {
+//           order = order.filter((test:any, index:any, array:any) =>
+//             index === array.findIndex((findTest: { order_id: any; }) =>
+//             findTest.order_id === test.order_id
+//             )
+//          );
+//           this.order = order;
+//           for (let index = 0; index < order.length; index++) {
+//             this.totalpaid +=parseInt(this.order[index].amount_paid)
+//           }
+//         }
+//       );
+//       }
+//   else{
+//     this.pull()
+//   }
+// }
 
 
 
 pull() {
   if (this.openshow == 1) {
     this.order_not_use = Array()
-    this.orderService.getOrder().subscribe(
+    this.orderService.getOrderByKey(this.keyword).subscribe(
       (order) => {
         order = order.filter((test:any, index:any, array:any) =>
         index === array.findIndex((findTest: { order_id: any; }) =>
