@@ -36,14 +36,14 @@
           <td>{{b.product_code}}</td>
           <td>{{b.product_name}}</td>
           <td>{{b.qty}}</td>
-          <td>{{b.product_price}}</td>
+          <td>{{b.amount | ceil }}</td>
 
 
         </tr>
       </tbody>
     </table>
 
-    <div style="text-align: right;">รวมทั้งสิ้น {{ total_price }} บาท </div>
+    <div style="text-align: right;">รวมทั้งสิ้น {{ amount_paid | ceil}} บาท </div>
 
     <br>
     <div class="row">
@@ -55,7 +55,7 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <tr><td>จำนวนเงินที่โอน {{amount_paid}} บาท</td></tr> <div></div>
+          <tr><td>จำนวนเงินที่โอน {{amount_paid | ceil}} บาท</td></tr> <div></div>
          <tr><td>วันที่โอน {{ totalDate | date | adtobe2 }} </td></tr>
         </div>
         <div class="col-1">

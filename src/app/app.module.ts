@@ -42,6 +42,7 @@ import {
   ParsePipeModule
 } from 'ngx-date-fns';
 import { Adtobe2Pipe } from './shared/adtobe2.pipe';
+import { NgPipesModule } from 'ngx-pipes';
 
 const thaiConfig = new DateFnsConfigurationService();
 thaiConfig.setLocale(th);
@@ -95,7 +96,8 @@ const maskConfig: Partial<IConfig> = {
     FormatDistanceToNowPipeModule,
     WeekdayNamePipeModule,
     ParsePipeModule,
-    NgxMaskModule.forRoot(maskConfig)
+    NgxMaskModule.forRoot(maskConfig),
+    NgPipesModule
 
   ],
   providers: [

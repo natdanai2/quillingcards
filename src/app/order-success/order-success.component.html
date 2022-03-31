@@ -79,7 +79,7 @@
         <td>{{b.order_id}}</td>
         <td>{{b.name}}</td>
         <td>{{b.status}}</td>
-        <td>{{b.amount_paid}}</td>
+        <td>{{b.amount_paid | ceil}}</td>
         <!-- <td>{{b.date | date:'dd/MM/YYYY เวลา HH:mm น.'}}</td> -->
         <td>{{b.date | date:'medium' | adtobe}}</td>
 

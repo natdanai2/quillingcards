@@ -107,10 +107,12 @@ pull() {
         findTest.order_id === test.order_id
         )
      );
-        this.order = order;
-        for (let index = 0; index < order.length; index++) {
-          this.totalpaid +=parseInt(this.order[index].amount_paid)
-        }
+        this.order_not_use = order;
+
+        // for (let index = 0; index < order.length; index++) {
+        //   this.totalpaid +=parseInt(this.order[index].amount_paid)
+        // }
+        this.totalRecordsnotuse = order.length
       }
     );
   }

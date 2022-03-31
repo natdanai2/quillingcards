@@ -1,4 +1,4 @@
-<?php 
+<?php
 
     session_start();
     require_once 'config/db.php';
@@ -7,7 +7,7 @@
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-      
+
         if (empty($email)) {
             $_SESSION['error'] = 'กรุณากรอกอีเมล';
             header("location: signin.php");
@@ -23,7 +23,7 @@
         } else {
             try {
 
-                $check_data = $conn->prepare("SELECT * FROM users WHERE email = :email");
+                $check_data = $conn->prepare("SELECT * FROM tb_users_log WHERE email = :email");
                 $check_data->bindParam(":email", $email);
                 $check_data->execute();
                 $row = $check_data->fetch(PDO::FETCH_ASSOC);

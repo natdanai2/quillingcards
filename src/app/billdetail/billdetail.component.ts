@@ -40,7 +40,7 @@ export class BilldetailComponent implements OnInit {
   product_price : string ='';
   total_price : string ='';
   image : string='';
-  amount_paid : string='';
+  amount_paid : any
 
   option ={
     locale:th

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
     session_start();
     require_once 'config/db.php';
@@ -21,11 +21,11 @@
 </head>
 <body>
     <div class="container">
-        <?php 
+        <?php
 
             if (isset($_SESSION['user_login'])) {
                 $user_id = $_SESSION['user_login'];
-                $stmt = $conn->query("SELECT * FROM users WHERE id = $user_id");
+                $stmt = $conn->query("SELECT * FROM tb_users WHERE cus_id = $user_id");
                 $stmt->execute();
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
             }
